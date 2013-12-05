@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: OS X | Zenf]]></title>
-  <link href="http://lucaslew.github.io//github/blog/categories/os-x/atom.xml" rel="self"/>
-  <link href="http://lucaslew.github.io//github/"/>
-  <updated>2013-12-06T00:38:56+01:00</updated>
-  <id>http://lucaslew.github.io//github/</id>
+  <link href="http://Powernap.github.io/blog/categories/os-x/atom.xml" rel="self"/>
+  <link href="http://Powernap.github.io/"/>
+  <updated>2013-12-06T00:53:15+01:00</updated>
+  <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Install Python with VTK and Qt support for use with Eclipse in OS X Mountain Lion]]></title>
-    <link href="http://lucaslew.github.io//github/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/"/>
+    <link href="http://Powernap.github.io/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/"/>
     <updated>2012-08-20T10:04:00+02:00</updated>
-    <id>http://lucaslew.github.io//github/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion</id>
+    <id>http://Powernap.github.io/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion</id>
     <content type="html"><![CDATA[<p>In this post I&rsquo;d like to show you how to install <code>Python</code> with support for <code>VTK</code> and <code>Qt</code> using Apple OS X 10.8 Mountain Lion. Then I set up <code>Eclipse</code> with the new <code>Python</code> installation in order to use all of it&rsquo;s auto-completion and debugging capabilities. Please leave a comment with your experiences using this.</p>
 
 <p>The instructions for the installation of <code>Python</code> and <code>Qt</code> consists mostly of information from these two posts <a href="http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/">[1]</a> <a href="http://jbowles.github.com/blog/2012/04/22/python/">[2]</a>, so please credit these guys for this, not me.</p>

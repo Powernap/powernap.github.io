@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Zenf]]></title>
-  <link href="http://lucaslew.github.io//github/atom.xml" rel="self"/>
-  <link href="http://lucaslew.github.io//github/"/>
-  <updated>2013-12-06T00:38:56+01:00</updated>
-  <id>http://lucaslew.github.io//github/</id>
+  <link href="http://Powernap.github.io/atom.xml" rel="self"/>
+  <link href="http://Powernap.github.io/"/>
+  <updated>2013-12-06T00:53:15+01:00</updated>
+  <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Install Python with VTK and Qt support for use with Eclipse in OS X Mountain Lion]]></title>
-    <link href="http://lucaslew.github.io//github/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/"/>
+    <link href="http://Powernap.github.io/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/"/>
     <updated>2012-08-20T10:04:00+02:00</updated>
-    <id>http://lucaslew.github.io//github/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion</id>
+    <id>http://Powernap.github.io/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion</id>
     <content type="html"><![CDATA[<p>In this post I&rsquo;d like to show you how to install <code>Python</code> with support for <code>VTK</code> and <code>Qt</code> using Apple OS X 10.8 Mountain Lion. Then I set up <code>Eclipse</code> with the new <code>Python</code> installation in order to use all of it&rsquo;s auto-completion and debugging capabilities. Please leave a comment with your experiences using this.</p>
 
 <p>The instructions for the installation of <code>Python</code> and <code>Qt</code> consists mostly of information from these two posts <a href="http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/">[1]</a> <a href="http://jbowles.github.com/blog/2012/04/22/python/">[2]</a>, so please credit these guys for this, not me.</p>
@@ -125,9 +125,9 @@ Note: If you have a Terminal session up and running you need to restart it in or
 <p>This part is oriented on the introduction on how to include the <code>DRE</code> into <code>Eclipse</code>, which can be found under <a href="http://code.google.com/p/devide/wiki/EclipseDRE">[4]</a> and in the following screencast. I just made a few enhancements to make it work for this application. Note that the steps of the screencast don&rsquo;t work exactly on our installation!<iframe width="420" height="315" src="http://www.youtube.com/embed/-b1zS536R2M" frameborder="0" allowfullscreen></iframe></p>
 
 <p>To use <code>Python</code> together with <code>Eclipse</code> you have to install the <em>Classic</em> Version from <a href="http://www.eclipse.org/downloads/">the official homepage</a>. Next, <a href="http://pydev.org/manual_101_install.html">install PyDev into Eclipse</a>. Now you need to tell <code>Eclipse</code> which <code>Python</code> installation it should use. This can be done in <code>Eclipse → Settings → Pydev → Interpreter-Python → New</code>. In the next Dialog you have to add Path to the Homebrew <code>Python</code>.
-<img class="center" src="http://lucaslew.github.io//github/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonInterpreter.png">
+<img class="center" src="http://Powernap.github.io/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonInterpreter.png">
 Confirm the next Prompt which should look like the following screenshot and you are done.
-<img class="center" src="http://lucaslew.github.io//github/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonPackages.png"></p>
+<img class="center" src="http://Powernap.github.io/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonPackages.png"></p>
 
 <p>Now you are good to go. Create a new PyDev Project, select the new created interpreter and play around with <code>VTK</code> &ndash; it all should be working with auto completion and the other neat <code>Eclipse</code> features. The Code example Charl used in the Screencast should compile:</p>
 
