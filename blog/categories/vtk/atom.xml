@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: VTK | Zenf]]></title>
+  <link href="http://lucaslew.github.io//github/blog/categories/vtk/atom.xml" rel="self"/>
+  <link href="http://lucaslew.github.io//github/"/>
+  <updated>2013-12-06T00:38:56+01:00</updated>
+  <id>http://lucaslew.github.io//github/</id>
+  <author>
+    <name><![CDATA[Paul Klemm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Install Python with VTK and Qt support for use with Eclipse in OS X Mountain Lion]]></title>
+    <link href="http://lucaslew.github.io//github/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/"/>
+    <updated>2012-08-20T10:04:00+02:00</updated>
+    <id>http://lucaslew.github.io//github/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion</id>
+    <content type="html"><![CDATA[<p>In this post I&rsquo;d like to show you how to install <code>Python</code> with support for <code>VTK</code> and <code>Qt</code> using Apple OS X 10.8 Mountain Lion. Then I set up <code>Eclipse</code> with the new <code>Python</code> installation in order to use all of it&rsquo;s auto-completion and debugging capabilities. Please leave a comment with your experiences using this.</p>
+
+<p>The instructions for the installation of <code>Python</code> and <code>Qt</code> consists mostly of information from these two posts <a href="http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/">[1]</a> <a href="http://jbowles.github.com/blog/2012/04/22/python/">[2]</a>, so please credit these guys for this, not me.</p>
+
+<p>If you run a Windows or Linux machine and you might want to do yourself a favor and use the <a href="http://graphics.tudelft.nl/Projects/DeVIDE">DRE which is included in DeVIDE</a>.</p>
+
+<h2>Install and configure Homebrew</h2>
+
+<p>As a very first step you need to install <em>Homebrew</em>, the friendly packet manager for Mac OS X <a href="http://mxcl.github.com/homebrew/">[3]</a>. This makes it really easy to install all the necessary stuff. While OS X already ships with versions of <code>Python</code>, <code>Ruby</code> and other stuff, the versions they provide are often deprecated and installing own packages can be quite frustrating. Homebrew installs all it&rsquo;s stuff isolated from the system under <code>/usr/local/cellar</code>. This way you can install your own libraries without touching the components installed from Apple.</p>
+
+<p>In order make sure that Terminal searches the <code>bin</code> folder of Homebrew first before the System <code>bin</code> folder (which is <code>/usr/bin</code>), you need to add it to the <code>PATH</code>-variable. This can be done by editing the <code>.bash_profile</code> file in you user root folder <code>/Users/&lt;your username&gt;/.bash_profile</code> (further referenced as <code>~/</code>). If this file doesn&rsquo;t exist, create it! Now you add
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>~/.bash_profile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/bin:<span class="nv">$PATH</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/share/python:<span class="nv">$PATH</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+to the file. The second entry is later used to get the right version of <code>PIP</code>.
+Note: If you have a Terminal session up and running you need to restart it in order to apply the changes to the <code>PATH</code>. If you have trouble with hidden files on the system, <a href="http://totalfinder.binaryage.com/">this Tool</a> can come in handy for you!</p>
+
+<p>Before you install anything to Homebrew, be sure to run <code>brew doctor</code> and <code>brew update</code> to check if all dependencies are installed (<code>xCode</code>, <code>Command Line Tools</code> and <code>x11</code>). When <code>brew doctor</code> gives you green light you are good to go!</p>
+
+<h2>Install Python</h2>
+
+<p>The very first step is that you install your own version of <code>Python</code> by running the following command:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install python &amp;mdash;framework &amp;mdash;universal
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+In order to make it the default <code>Python</code> installation of the system you need to execute
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /System/Library/Frameworks/Python.framework/Versions
+</span><span class='line'>sudo rm Current
+</span><span class='line'>ln -s /usr/local/Cellar/python/2.7.2/Frameworks/Python.framework/Versions/Current
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+This changes the symlink to our new <code>Python</code> installation. You will be promted for you password since this is an action which requires admin rights.</p>
+
+<p>If everything worked, <code>which python</code> should return <code>/usr/local/bin/python</code>.</p>
+
+<p>Next step is the installation of <code>PIP</code> using the command
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>easy_install pip
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Now <code>which pip</code> should return <code>/usr/local/share/python/pip</code> &ndash; otherwise the <code>PATH</code> is not properly set as described above.</p>
+
+<p>Now you can install other Packages like <code>Numpy</code> or <code>Scipy</code> &ndash; depending on what you need. Note: If you want to install <code>Scipy</code> you need to install the <code>gfortran</code> compiler.
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install numpy
+</span><span class='line'>brew install gfortran
+</span><span class='line'>pip install scipy
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Note: To date of this post, you have to use the developer version of <code>Scipy</code> to make it work under Mountain Lion. This can be done using
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install -e git+&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/scipy/scipy#egg=scipy-dev&quot;</span>&gt;https://github.com/scipy/scipy#egg<span class="o">=</span>scipy-dev&lt;/a&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+This will create a folder <code>~/src</code> and install <code>Scipy</code> from there.</p>
+
+<h2>Install Qt</h2>
+
+<p>To install <code>Qt</code> and <code>Pyqt</code>-bindings you execute
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install qt
+</span><span class='line'>brew install pyqt
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Install VTK</h2>
+
+<p>To install VTK you need to run
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install vtk &amp;mdash;tcl &amp;mdash;qt &amp;mdash;python &amp;mdash;pyqt &amp;mdash;examples
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+This took about 60 minutes on my early 2008 Macbook Pro, so take your time for a well-earned rest ;).</p>
+
+<p>When this is done you should be able to <code>import vtk</code> into your <code>Python</code> environment without any errors.</p>
+
+<h2>Setup Python for use with Eclipse</h2>
+
+<p>This part is oriented on the introduction on how to include the <code>DRE</code> into <code>Eclipse</code>, which can be found under <a href="http://code.google.com/p/devide/wiki/EclipseDRE">[4]</a> and in the following screencast. I just made a few enhancements to make it work for this application. Note that the steps of the screencast don&rsquo;t work exactly on our installation!<iframe width="420" height="315" src="http://www.youtube.com/embed/-b1zS536R2M" frameborder="0" allowfullscreen></iframe></p>
+
+<p>To use <code>Python</code> together with <code>Eclipse</code> you have to install the <em>Classic</em> Version from <a href="http://www.eclipse.org/downloads/">the official homepage</a>. Next, <a href="http://pydev.org/manual_101_install.html">install PyDev into Eclipse</a>. Now you need to tell <code>Eclipse</code> which <code>Python</code> installation it should use. This can be done in <code>Eclipse → Settings → Pydev → Interpreter-Python → New</code>. In the next Dialog you have to add Path to the Homebrew <code>Python</code>.
+<img class="center" src="/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonInterpreter.png">
+Confirm the next Prompt which should look like the following screenshot and you are done.
+<img class="center" src="/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonPackages.png"></p>
+
+<p>Now you are good to go. Create a new PyDev Project, select the new created interpreter and play around with <code>VTK</code> &ndash; it all should be working with auto completion and the other neat <code>Eclipse</code> features. The Code example Charl used in the Screencast should compile:
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>vtkDonutTest.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">vtk</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">create</span> <span class="n">a</span> <span class="n">donut</span> <span class="n">polydata</span> <span class="n">source</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">s</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkSuperquadricSource</span><span class="p">()</span>
+</span><span class='line'><span class="n">s</span><span class="o">.</span><span class="n">ToroidalOn</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">connect</span> <span class="n">it</span> <span class="n">to</span> <span class="n">a</span> <span class="n">polydatamapper</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">m</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkPolyDataMapper</span><span class="p">()</span>
+</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">SetInput</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">())</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="ow">and</span> <span class="k">finally</span> <span class="n">create</span> <span class="n">an</span> <span class="n">actor</span> <span class="n">to</span> <span class="n">represent</span> <span class="n">the</span> <span class="n">donut</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">scene</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">a</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkActor</span><span class="p">()</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">SetMapper</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">the</span> <span class="n">renderer</span> <span class="ow">is</span> <span class="n">the</span> <span class="mi">3</span><span class="n">D</span> <span class="n">scene</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">ren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderer</span><span class="p">()</span>
+</span><span class='line'><span class="n">ren</span><span class="o">.</span><span class="n">AddActor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">renderwindow</span> <span class="n">to</span> <span class="n">contain</span> <span class="n">the</span> <span class="mi">3</span><span class="n">D</span> <span class="n">scene</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">rw</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindow</span><span class="p">()</span>
+</span><span class='line'><span class="n">rw</span><span class="o">.</span><span class="n">AddRenderer</span><span class="p">(</span><span class="n">ren</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">we</span> <span class="n">want</span> <span class="n">the</span> <span class="n">user</span> <span class="n">to</span> <span class="n">interact</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">iren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindowInteractor</span><span class="p">()</span>
+</span><span class='line'><span class="n">iren</span><span class="o">.</span><span class="n">SetRenderWindow</span><span class="p">(</span><span class="n">rw</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">get</span> <span class="n">the</span> <span class="n">whole</span> <span class="n">business</span> <span class="n">going</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">iren</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+</span><span class='line'><span class="n">rw</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span>
+</span><span class='line'><span class="n">iren</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>To test the Qt-Support you can run the following code <a href="https://svn.enthought.com/svn/enthought/Mayavi/trunk/enthought/tvtk/pyface/ui/qt4/QVTKRenderWindowInteractor.py">[5]</a>:
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>vtkQtTest.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">vtk</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtGui</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">vtk.qt4.QVTKRenderWindowInteractor</span> <span class="kn">import</span> <span class="n">QVTKRenderWindowInteractor</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">A</span> <span class="n">simple</span> <span class="n">example</span> <span class="n">that</span> <span class="n">uses</span> <span class="n">the</span> <span class="n">QVTKRenderWindowInteractor</span> <span class="n">class</span><span class="o">.&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">every</span> <span class="n">QT</span> <span class="n">app</span> <span class="n">needs</span> <span class="n">an</span> <span class="n">app</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">app</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="p">([</span><span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">QVTKRenderWindowInteractor</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;])</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">create</span> <span class="n">the</span> <span class="n">widget</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">widget</span> <span class="o">=</span> <span class="n">QVTKRenderWindowInteractor</span><span class="p">()</span>
+</span><span class='line'><span class="n">widget</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+</span><span class='line'><span class="n">widget</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="k">if</span> <span class="n">you</span> <span class="n">dont</span> <span class="n">want</span> <span class="n">the</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">q</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span> <span class="n">key</span> <span class="n">to</span> <span class="nb">exit</span> <span class="n">comment</span> <span class="n">this</span><span class="o">.&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">widget</span><span class="o">.</span><span class="n">AddObserver</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">ExitEvent</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;,</span> <span class="k">lambda</span> <span class="n">o</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">app</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">quit</span><span class="p">())</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">ren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderer</span><span class="p">()</span>
+</span><span class='line'><span class="n">widget</span><span class="o">.</span><span class="n">GetRenderWindow</span><span class="p">()</span><span class="o">.</span><span class="n">AddRenderer</span><span class="p">(</span><span class="n">ren</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">cone</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkConeSource</span><span class="p">()</span>
+</span><span class='line'><span class="n">cone</span><span class="o">.</span><span class="n">SetResolution</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">coneMapper</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkPolyDataMapper</span><span class="p">()</span>
+</span><span class='line'><span class="n">coneMapper</span><span class="o">.</span><span class="n">SetInput</span><span class="p">(</span><span class="n">cone</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">())</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">coneActor</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkActor</span><span class="p">()</span>
+</span><span class='line'><span class="n">coneActor</span><span class="o">.</span><span class="n">SetMapper</span><span class="p">(</span><span class="n">coneMapper</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">ren</span><span class="o">.</span><span class="n">AddActor</span><span class="p">(</span><span class="n">coneActor</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">show</span> <span class="n">the</span> <span class="n">widget</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">widget</span><span class="o">.</span><span class="n">show</span><span class="p">()</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">start</span> <span class="n">event</span> <span class="n">processing</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Add VTK-Module to Qt-Designer</h2>
+
+<p>If you want to use the <code>Qt-Designer</code> for the use with <code>VTK</code>, things get a little bit tricky. The <code>Qt-Designer</code> comes with our installation of <code>Qt</code> under <code>/usr/local/Cellar/qt/4.8.2/Designer.app</code> and is a <em>WYSISWYG</em>-Editor for <code>Qt</code>-UIs. <code>VTK</code> already has installed a plugin for it, it just has to be sym-linked into the <code>Qt-Designer</code>-Path. You can do this using the following commands, but check your current versions before running these.
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /usr/local/Cellar/qt/4.8.2/plugins/designer
+</span><span class='line'>ln -s /usr/local/Cellar/vtk/5.10.0/plugins/designer/libQVTKWidgetPlugin.dylib libQVTKWidgetPlugin.dylib
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Now you should have a QVTKWidget available in the <code>Qt-Designer</code>. The tricky part begins now. Unfortunately when you try to include a <code>Qt</code>-UI which contains a <code>QVTKWidget</code>, it fails to compile, because <code>QVTKWidget</code> belongs to the Class <code>QVTKWidget.QVTKWidget</code>, while the correct class is <code>vtk.QVTKWidget</code>. You can fix this using the following workaround.</p>
+
+<p>When you have created your UI using the <code>Qt-Designer</code> you can convert it to <code>Python</code>-Code using the command
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pyuic4 myTestApp.ui &gt; myTestApp_ui.py
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Import the new file into your Project and change the line
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">QVTKWidget</span> <span class="kn">import</span> <span class="n">QVTKWidget</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+to
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">vtk</span> <span class="kn">import</span> <span class="n">QVTKWidget</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Now it will compile and run. The tradeoff is that you have to manually change this line every time you want to make changes to the UI using the <code>Qt-Designer</code>.
+To give an example for a converted UI file which runs, look at the following code.
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>pythonQtVTKTest.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">vtk</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtGui</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">pythonQtVTKTest_ui</span> <span class="kn">import</span> <span class="n">Ui_Form_Main</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">StartQT4</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">QtGui</span><span class="o">.</span><span class="n">QWidget</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">Ui_Form_Main</span><span class="p">()</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">draw_stuff</span><span class="p">()</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">draw_stuff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>    <span class="c"># create a donut polydata source</span>
+</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkSuperquadricSource</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">s</span><span class="o">.</span><span class="n">ToroidalOn</span><span class="p">()</span>
+</span><span class='line'>    <span class="c"># connect it to a polydatamapper</span>
+</span><span class='line'>    <span class="n">m</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkPolyDataMapper</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">m</span><span class="o">.</span><span class="n">SetInput</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">())</span>
+</span><span class='line'>    <span class="c"># and finally create an actor to represent the donut in the scene</span>
+</span><span class='line'>    <span class="n">a</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkActor</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">a</span><span class="o">.</span><span class="n">SetMapper</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># the renderer is the 3D scene</span>
+</span><span class='line'>    <span class="n">ren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderer</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">ren</span><span class="o">.</span><span class="n">AddActor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>    <span class="c"># renderwindow to contain the 3D scene</span>
+</span><span class='line'>    <span class="n">rw</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindow</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">rw</span><span class="o">.</span><span class="n">AddRenderer</span><span class="p">(</span><span class="n">ren</span><span class="p">)</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">qvtkWidget</span><span class="o">.</span><span class="n">GetRenderWindow</span><span class="p">()</span><span class="o">.</span><span class="n">AddRenderer</span><span class="p">(</span><span class="n">ren</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># we want the user to interact</span>
+</span><span class='line'>    <span class="n">iren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindowInteractor</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">iren</span><span class="o">.</span><span class="n">SetRenderWindow</span><span class="p">(</span><span class="n">rw</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c"># get the whole business going</span>
+</span><span class='line'>    <span class="n">iren</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">rw</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span>
+</span><span class='line'>    <span class="c">#iren.Start()</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">main</span><span class="o">&lt;/</span><span class="n">strong</span><span class="o">&gt;&amp;</span><span class="n">rdquo</span><span class="p">;:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">app</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</span><span class='line'><span class="n">myapp</span> <span class="o">=</span> <span class="n">StartQT4</span><span class="p">()</span>
+</span><span class='line'><span class="n">myapp</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span><span class='line'><span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>pythonQtVTKTest_UI.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;&amp;</span><span class="n">ndash</span><span class="p">;</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;&amp;</span><span class="n">ndash</span><span class="p">;</span> <span class="n">coding</span><span class="p">:</span> <span class="n">utf</span><span class="o">-</span><span class="mi">8</span> <span class="o">&amp;</span><span class="n">ndash</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;&amp;</span><span class="n">ndash</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Form</span> <span class="n">implementation</span> <span class="n">generated</span> <span class="kn">from</span> <span class="nn">reading</span> <span class="nn">ui</span> <span class="nn">file</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">pythonQtVTKTest</span><span class="o">.</span><span class="n">ui</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="c">#&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Created</span><span class="p">:</span> <span class="n">Tue</span> <span class="n">Aug</span> <span class="mi">21</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">57</span> <span class="mi">2012</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">by</span><span class="p">:</span> <span class="n">PyQt4</span> <span class="n">UI</span> <span class="n">code</span> <span class="n">generator</span> <span class="mf">4.9</span><span class="o">.</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="c">#&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">WARNING</span><span class="err">!</span> <span class="n">All</span> <span class="n">changes</span> <span class="n">made</span> <span class="ow">in</span> <span class="n">this</span> <span class="nb">file</span> <span class="n">will</span> <span class="n">be</span> <span class="n">lost</span><span class="err">!</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">try</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">_fromUtf8</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QString</span><span class="o">.</span><span class="n">fromUtf8</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">_fromUtf8</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">Ui_Form_Main</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Form_Main</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">Form_Main</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="n">_fromUtf8</span><span class="p">(</span><span class="s">&quot;Form_Main&quot;</span><span class="p">))</span>
+</span><span class='line'>    <span class="n">Form_Main</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">Form_Main</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">623</span><span class="p">,</span> <span class="mi">462</span><span class="p">)</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">qvtkWidget</span> <span class="o">=</span> <span class="n">QVTKWidget</span><span class="p">(</span><span class="n">Form_Main</span><span class="p">)</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">qvtkWidget</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QRect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">601</span><span class="p">,</span> <span class="mi">441</span><span class="p">))</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">qvtkWidget</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="n">_fromUtf8</span><span class="p">(</span><span class="s">&quot;qvtkWidget&quot;</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">retranslateUi</span><span class="p">(</span><span class="n">Form_Main</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">QtCore</span><span class="o">.</span><span class="n">QMetaObject</span><span class="o">.</span><span class="n">connectSlotsByName</span><span class="p">(</span><span class="n">Form_Main</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">retranslateUi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Form_Main</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">Form_Main</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s">&quot;Form_Main&quot;</span><span class="p">,</span> <span class="s">&quot;VTK Test&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="o">.</span><span class="n">UnicodeUTF8</span><span class="p">))</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kn">from</span> <span class="nn">vtk</span> <span class="kn">import</span> <span class="n">QVTKWidget</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<strong>If anyone knows a simpler solution to this, please post it in the comments!</strong></p>
+
+<h2>Using MacTex and Homebrew</h2>
+
+<p>Just a short footnote for those of you who use <code>MacTex</code>. <code>MacTex</code> stores it&rsquo;s files under <code>/usr/local/texlive</code> next to the <code>Homebrew</code> stuff. They coexist peaceful next to each other, you just have to apply some diplomacy using the following command <a href="https://github.com/ThinkRuby/thinkruby/wiki/">[6]</a>.
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo chown -R <span class="nv">$USER</span>:staff /usr/local
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+You might also consult the <code>brew doctor</code>, he will tell you what to do.</p>
+
+<h2>Thats it</h2>
+
+<p>Thank you for reading, I hope these instructions help you in some way. Please feel free to leave a comment. Have a nice day!</p>
+
+<hr />
+
+<h1>References</h1>
+
+<p><a href="http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/">[1] http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/</a><br />
+<a href="http://jbowles.github.com/blog/2012/04/22/python/">[2] http://jbowles.github.com/blog/2012/04/22/python/</a><br />
+<a href="http://mxcl.github.com/homebrew/">[3] http://mxcl.github.com/homebrew/</a><br />
+<a href="http://code.google.com/p/devide/wiki/EclipseDRE">[4] http://code.google.com/p/devide/wiki/EclipseDRE</a><br />
+<a href="https://svn.enthought.com/svn/enthought/Mayavi/trunk/enthought/tvtk/pyface/ui/qt4/QVTKRenderWindowInteractor.py">[5] https://svn.enthought.com/svn/enthought/Mayavi/trunk/enthought/tvtk/pyface/ui/qt4/QVTKRenderWindowInteractor.py</a><br />
+<a href="https://github.com/ThinkRuby/thinkruby/wiki/">[6] https://github.com/ThinkRuby/thinkruby/wiki/</a>.</p>
+
+<h2>This might also be useful for you</h2>
+
+<p><a href="http://graphics.tudelft.nl/Projects/DeVIDE">DeVIDE/DRE from the University of Delft</a><br />
+<a href="http://totalfinder.binaryage.com/">Total Finder</a><br />
+<a href="http://macromates.com/">My favorite Editor: Textmate</a><br />
+<a href="http://www.rkblog.rk.edu.pl/w/p/introduction-pyqt4/">Great collection of Python/Qt Tutorials</a></p>
+]]></content>
+  </entry>
+  
+</feed>
