@@ -3,7 +3,7 @@ layout: post
 title: "Watch Twitch using VLC in OS X"
 date: 2013-12-07 00:20:42 +0100
 comments: true
-categories: [Twitch, VLC, OSX, streaming, Homebrew, livestreamer]
+categories: [Twitch, VLC, OSX, streaming, Homebrew, livestreamer, rtmpdump]
 ---
 
 If you own a Retina-Macbook you problably struggle with fairly high CPU load and bad performance when watching Twitch-channels using the standard flash-based player in the browser.
@@ -11,12 +11,12 @@ If you own a Retina-Macbook you problably struggle with fairly high CPU load and
 A tool called `livestreamer` can be used to bring Twitch streams to the beloved VLC player (which also uses the GPU to process videos). This way you are not just able to reduce the used resources, the streams also feel much smoother, especially for high resolutions.
 
 *Twitch will not be able to stream ads if you use this solution.* 
-*Please be fair and subscribe to channels you like and your support.*
+*Please be fair and subscribe to channels you like and you support.*
 
 Install Livestreamer
 --------------------
 
-- Download and install `rtmdump` from [here](http://trick77.com/wp-content/uploads/2008/01/rtmpdump-2.4_mac_os.zip)
+- Download and install `rtmpdump` from [here](http://trick77.com/wp-content/uploads/2008/01/rtmpdump-2.4_mac_os.zip)
 - Download `python-setuptools` from [here](https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea)
 - Open `Terminal.app`
 - Navigate to the folder where you downloaded the Egg-File and install it
