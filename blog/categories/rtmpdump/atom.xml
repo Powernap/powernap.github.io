@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Twitch | Zenf]]></title>
-  <link href="http://Powernap.github.io/blog/categories/twitch/atom.xml" rel="self"/>
+  <title><![CDATA[Category: rtmpdump | Zenf]]></title>
+  <link href="http://Powernap.github.io/blog/categories/rtmpdump/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
   <updated>2013-12-07T14:31:07+01:00</updated>
   <id>http://Powernap.github.io/</id>

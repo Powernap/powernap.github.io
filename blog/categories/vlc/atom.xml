@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VLC | Zenf]]></title>
   <link href="http://Powernap.github.io/blog/categories/vlc/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
-  <updated>2013-12-07T01:22:34+01:00</updated>
+  <updated>2013-12-07T14:31:07+01:00</updated>
   <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -23,12 +23,12 @@
 <p>A tool called <code>livestreamer</code> can be used to bring Twitch streams to the beloved VLC player (which also uses the GPU to process videos). This way you are not just able to reduce the used resources, the streams also feel much smoother, especially for high resolutions.</p>
 
 <p><em>Twitch will not be able to stream ads if you use this solution.</em>
-<em>Please be fair and subscribe to channels you like and your support.</em></p>
+<em>Please be fair and subscribe to channels you like and you support.</em></p>
 
 <h2>Install Livestreamer</h2>
 
 <ul>
-<li>Download and install <code>rtmdump</code> from <a href="http://trick77.com/wp-content/uploads/2008/01/rtmpdump-2.4_mac_os.zip">here</a></li>
+<li>Download and install <code>rtmpdump</code> from <a href="http://trick77.com/wp-content/uploads/2008/01/rtmpdump-2.4_mac_os.zip">here</a></li>
 <li>Download <code>python-setuptools</code> from <a href="https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea">here</a></li>
 <li>Open <code>Terminal.app</code></li>
 <li>Navigate to the folder where you downloaded the Egg-File and install it
