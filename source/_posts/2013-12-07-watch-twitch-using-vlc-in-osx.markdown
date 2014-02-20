@@ -13,6 +13,10 @@ A tool called `livestreamer` can be used to bring Twitch streams to the beloved 
 *Twitch will not be able to stream ads if you use this solution.* 
 *Please be fair and subscribe to channels you like and you support.*
 
+**[Update 2014-02-20]**
+
+If you are using the glorious [Alfred App](www.alfredapp.com) you might be interested in this workflow which allows for the same thing: [http://www.packal.org/workflow/twitchstreamer](http://www.packal.org/workflow/twitchstreamer).
+
 Install Livestreamer
 --------------------
 
