@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Twitch | Zenf]]></title>
   <link href="http://Powernap.github.io/blog/categories/twitch/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
-  <updated>2013-12-07T14:31:07+01:00</updated>
+  <updated>2014-02-20T10:37:19+01:00</updated>
   <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -24,6 +24,10 @@
 
 <p><em>Twitch will not be able to stream ads if you use this solution.</em>
 <em>Please be fair and subscribe to channels you like and you support.</em></p>
+
+<p><strong>[Update 2014-02-20]</strong></p>
+
+<p>If you are using the glorious <a href="www.alfredapp.com">Alfred App</a> you might be interested in this workflow which allows for the same thing: <a href="http://www.packal.org/workflow/twitchstreamer">http://www.packal.org/workflow/twitchstreamer</a>.</p>
 
 <h2>Install Livestreamer</h2>
 
