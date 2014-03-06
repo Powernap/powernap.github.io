@@ -17,6 +17,10 @@ A tool called `livestreamer` can be used to bring Twitch streams to the beloved 
 
 If you are using the glorious [Alfred App](www.alfredapp.com) you might be interested in this workflow which allows for the same thing: [http://www.packal.org/workflow/twitchstreamer](http://www.packal.org/workflow/twitchstreamer).
 
+**[Update 2014-03-06]**
+
+Added updating instructions.
+
 Install Livestreamer
 --------------------
 
@@ -52,6 +56,24 @@ Here, `[quality]` has to be a quality setting from the stream, usually ranging b
 
 Et voilá. Enjoy your stream.
 {% img center /media/2013-12-07-watch-twitch-using-vlc-in-osx/twitch-vlc-sc2_small.png %}
+
+Update Livestreamer
+-------------------
+
+If you see a message like this when launching `livestreamer` you might update to the latest version:
+{% codeblock lang:bash %}
+[cli][info] A new version of Livestreamer (1.7.4) is available!
+{% endcodeblock %}
+
+To do so, navigate to any folder, for example `~/Downloads`, and run the following command:
+{% codeblock lang:bash %}
+cd ~/Downloads
+git clone git://github.com/chrippa/livestreamer.git
+cd livestreamer
+python setup.py install
+{% endcodeblock %}
+
+After that you can remove the livestreamer folder from the folder you cloned the GIT repository to (`~/Downloads/livestreamer` in our example).
 
 References
 ==========
