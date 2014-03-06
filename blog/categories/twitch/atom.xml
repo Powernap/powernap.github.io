@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Twitch | Zenf]]></title>
   <link href="http://Powernap.github.io/blog/categories/twitch/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
-  <updated>2014-02-20T10:37:19+01:00</updated>
+  <updated>2014-03-06T22:39:26+01:00</updated>
   <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -28,6 +28,10 @@
 <p><strong>[Update 2014-02-20]</strong></p>
 
 <p>If you are using the glorious <a href="www.alfredapp.com">Alfred App</a> you might be interested in this workflow which allows for the same thing: <a href="http://www.packal.org/workflow/twitchstreamer">http://www.packal.org/workflow/twitchstreamer</a>.</p>
+
+<p><strong>[Update 2014-03-06]</strong></p>
+
+<p>Added updating instructions.</p>
 
 <h2>Install Livestreamer</h2>
 
@@ -89,6 +93,26 @@ Here, <code>[quality]</code> has to be a quality setting from the stream, usuall
 
 <p>Et voilá. Enjoy your stream.
 <img class="center" src="/media/2013-12-07-watch-twitch-using-vlc-in-osx/twitch-vlc-sc2_small.png"></p>
+
+<h2>Update Livestreamer</h2>
+
+<p>If you see a message like this when launching <code>livestreamer</code> you might update to the latest version:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>cli<span class="o">][</span>info<span class="o">]</span> A new version of Livestreamer <span class="o">(</span>1.7.4<span class="o">)</span> is available!
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>To do so, navigate to any folder, for example <code>~/Downloads</code>, and run the following command:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Downloads
+</span><span class='line'>git clone git://github.com/chrippa/livestreamer.git
+</span><span class='line'><span class="nb">cd </span>livestreamer
+</span><span class='line'>python setup.py install
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After that you can remove the livestreamer folder from the folder you cloned the GIT repository to (<code>~/Downloads/livestreamer</code> in our example).</p>
 
 <h1>References</h1>
 
