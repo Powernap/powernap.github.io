@@ -77,4 +77,5 @@ After that you can remove the livestreamer folder from the folder you cloned the
 
 References
 ==========
-Links and instructions how to install everything is taken from different Posts in this [Gamespot Thread](http://forum.gamesports.net/dota/showthread.php?45027-How-to-watch-Twitch-TV-in-VLC-player-(MAC-OSX-HOW-TO)
+- Links and instructions how to install everything is taken from different Posts in this [Gamespot Thread](http://forum.gamesports.net/dota/showthread.php?45027-How-to-watch-Twitch-TV-in-VLC-player-(MAC-OSX-HOW-TO)
+- For further information, visit [this site from the livestreamer developer](http://livestreamer.tanuki.se/en/latest/) which offers more detailed instructions
