@@ -15,7 +15,7 @@ A tool called `livestreamer` can be used to bring Twitch streams to the beloved 
 
 **[Update 2014-02-20]**
 
-If you are using the glorious [Alfred App](www.alfredapp.com) you might be interested in this workflow which allows for the same thing: [http://www.packal.org/workflow/twitchstreamer](http://www.packal.org/workflow/twitchstreamer).
+If you are using the glorious [Alfred App](http://www.alfredapp.com) you might be interested in this workflow which allows for the same thing: [http://www.packal.org/workflow/twitchstreamer](http://www.packal.org/workflow/twitchstreamer).
 
 **[Update 2014-03-06]**
 
@@ -65,7 +65,7 @@ If you see a message like this when launching `livestreamer` you might update to
 [cli][info] A new version of Livestreamer (1.7.4) is available!
 {% endcodeblock %}
 
-To do so, navigate to any folder, for example `~/Downloads`, and run the following command:
+To do so, navigate to any folder, for example `~/Downloads`, and run the following commands:
 {% codeblock lang:bash %}
 cd ~/Downloads
 git clone git://github.com/chrippa/livestreamer.git
