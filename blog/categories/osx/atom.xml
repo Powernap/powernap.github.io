@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OSX | Zenf]]></title>
   <link href="http://Powernap.github.io/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
-  <updated>2014-03-07T10:32:13+01:00</updated>
+  <updated>2014-03-10T10:08:42+01:00</updated>
   <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -27,7 +27,7 @@
 
 <p><strong>[Update 2014-02-20]</strong></p>
 
-<p>If you are using the glorious <a href="www.alfredapp.com">Alfred App</a> you might be interested in this workflow which allows for the same thing: <a href="http://www.packal.org/workflow/twitchstreamer">http://www.packal.org/workflow/twitchstreamer</a>.</p>
+<p>If you are using the glorious <a href="http://www.alfredapp.com">Alfred App</a> you might be interested in this workflow which allows for the same thing: <a href="http://www.packal.org/workflow/twitchstreamer">http://www.packal.org/workflow/twitchstreamer</a>.</p>
 
 <p><strong>[Update 2014-03-06]</strong></p>
 
@@ -101,7 +101,7 @@ Here, <code>[quality]</code> has to be a quality setting from the stream, usuall
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>cli<span class="o">][</span>info<span class="o">]</span> A new version of Livestreamer <span class="o">(</span>1.7.4<span class="o">)</span> is available!
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>To do so, navigate to any folder, for example <code>~/Downloads</code>, and run the following command:
+<p>To do so, navigate to any folder, for example <code>~/Downloads</code>, and run the following commands:
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
