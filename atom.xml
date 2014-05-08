@@ -4,7 +4,7 @@
   <title><![CDATA[Zenf]]></title>
   <link href="http://Powernap.github.io/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
-  <updated>2014-03-10T10:08:42+01:00</updated>
+  <updated>2014-05-08T10:49:21+02:00</updated>
   <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -27,7 +27,7 @@
 
 <p><strong>[Update 2014-02-20]</strong></p>
 
-<p>If you are using the glorious <a href="http://www.alfredapp.com">Alfred App</a> you might be interested in this workflow which allows for the same thing: <a href="http://www.packal.org/workflow/twitchstreamer">http://www.packal.org/workflow/twitchstreamer</a>.</p>
+<p>If you are using the glorious <a href="http://www.alfredapp.com">Alfred App</a> you might be interested in this workflow, which allows for the same thing: <a href="http://www.packal.org/workflow/twitchstreamer">http://www.packal.org/workflow/twitchstreamer</a>.</p>
 
 <p><strong>[Update 2014-03-06]</strong></p>
 
@@ -82,7 +82,7 @@ All you have to to is go into the <code>Terminal.app</code> and type</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here, <code>[quality]</code> has to be a quality setting from the stream, usually ranging between <code>low</code>, <code>medium</code>, <code>high</code> and <code>source</code>. If you leave it empty, <code>livestreamer</code> will tell you which options you can choose from.</p>
+<p>Here, <code>[quality]</code> has to be a quality setting from the stream, usually ranging between <code>low</code>, <code>medium</code>, <code>high</code> and <code>source</code>. If you leave it empty, <code>livestreamer</code> will tell you, which options you can choose from. Setting the parameter to <code>best</code> tells <code>livestreamer</code> to use the highest quality available.</p>
 
 <p>Et voilá. Enjoy your stream.
 <img class="center" src="http://Powernap.github.io/media/2013-12-07-watch-twitch-using-vlc-in-osx/twitch-vlc-sc2_small.png"></p>
@@ -115,7 +115,7 @@ All you have to to is go into the <code>Terminal.app</code> and type</p>
 
 <ul>
 <li>Links and instructions how to install everything is taken from different Posts in this <a href="http://forum.gamesports.net/dota/showthread.php?45027-How-to-watch-Twitch-TV-in-VLC-player-(MAC-OSX-HOW-TO">Gamespot Thread</a></li>
-<li>For further information, visit <a href="http://livestreamer.tanuki.se/en/latest/">this site from the livestreamer developer</a> which offers more detailed instructions</li>
+<li>For further information, visit <a href="http://livestreamer.tanuki.se/en/latest/">this site from the livestreamer developer</a>, which offers more detailed instructions</li>
 </ul>
 
 ]]></content>
