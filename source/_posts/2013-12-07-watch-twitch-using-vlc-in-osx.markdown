@@ -15,7 +15,7 @@ A tool called `livestreamer` can be used to bring Twitch streams to the beloved 
 
 **[Update 2014-02-20]**
 
-If you are using the glorious [Alfred App](http://www.alfredapp.com) you might be interested in this workflow which allows for the same thing: [http://www.packal.org/workflow/twitchstreamer](http://www.packal.org/workflow/twitchstreamer).
+If you are using the glorious [Alfred App](http://www.alfredapp.com) you might be interested in this workflow, which allows for the same thing: [http://www.packal.org/workflow/twitchstreamer](http://www.packal.org/workflow/twitchstreamer).
 
 **[Update 2014-03-06]**
 
@@ -52,7 +52,7 @@ All you have to to is go into the `Terminal.app` and type
 livestreamer http://www.twitch.tv/wcs_europe [quality]
 # You might as well skip the `http://www.` part
 {% endcodeblock %}
-Here, `[quality]` has to be a quality setting from the stream, usually ranging between `low`, `medium`, `high` and `source`. If you leave it empty, `livestreamer` will tell you which options you can choose from.
+Here, `[quality]` has to be a quality setting from the stream, usually ranging between `low`, `medium`, `high` and `source`. If you leave it empty, `livestreamer` will tell you, which options you can choose from. Setting the parameter to `best` tells `livestreamer` to use the highest quality available.
 
 Et voilá. Enjoy your stream.
 {% img center /media/2013-12-07-watch-twitch-using-vlc-in-osx/twitch-vlc-sc2_small.png %}
@@ -78,4 +78,4 @@ After that you can remove the livestreamer folder from the folder you cloned the
 References
 ==========
 - Links and instructions how to install everything is taken from different Posts in this [Gamespot Thread](http://forum.gamesports.net/dota/showthread.php?45027-How-to-watch-Twitch-TV-in-VLC-player-(MAC-OSX-HOW-TO)
-- For further information, visit [this site from the livestreamer developer](http://livestreamer.tanuki.se/en/latest/) which offers more detailed instructions
+- For further information, visit [this site from the livestreamer developer](http://livestreamer.tanuki.se/en/latest/), which offers more detailed instructions
