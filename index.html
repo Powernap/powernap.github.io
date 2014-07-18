@@ -9,7 +9,7 @@
   <meta name="author" content="Paul Klemm">
 
   
-  <meta name="description" content="If you own a Retina-Macbook you problably struggle with fairly high CPU load and bad performance when watching Twitch-channels using the standard &hellip;">
+  <meta name="description" content="tl;dr: GIT is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,360 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/16/use-github-for-scientific-writing/">Use Github for Scientific Writing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-16T16:36:35+02:00" pubdate data-updated="true">Jul 16<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/07/16/use-github-for-scientific-writing/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>tl;dr:</strong> <em><code>GIT</code> is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools supporting collaborative work makes <code>github</code> a good place for storing all information there provide an effective communication plattform.</em></p>
+
+<hr />
+
+<br>
+
+
+<p><img class="right" src="/media/2014-07-16-use-github-for-scientific-writing/gitlab.png" width="200">
+There are many reasons why I adore <code>github</code>! For me, it stands for all the good things associated with open content &mdash; the beautiful mindset behind it where many people participate to create amazing things! Openness, which is still largely missing in scientific research.</p>
+
+<p>Collaborative work on scientific paper is carried out in the worst case by emailing <code>LaTeX</code> code. I don&rsquo;t think I have to talk about the disadvantages of this approach. Tools like <a href="www.dropbox.com">Dropbox</a> allow to share folders with different users, but also have major disadvantages. They share everything in a folder, regardless of source files or auxiliary files created during the typesetting process. Many <code>LaTeX</code> editors store configuration files in the project folders and are therefore synced as well. And the constant dropbox pop-up informing me that someone currently works on a text is maddening.</p>
+
+<p><code>GIT</code> was designed for code-projects, but also works very well for the scientific writing process. If you are new to <code>GIT</code>, check out this great interactive tutorial, teaching you everything you need to know in about 15 minutes at <a href="try.github.io">try.github.io</a>.</p>
+
+<p>To clarify: <code>GIT</code> is the name of the <em>versioning system</em>, <code>github</code> is a web site for storing <code>GIT</code>-repositories and it comes with additional features. The major advantages of <code>GIT</code>/<code>github</code> include:</p>
+
+<ul>
+<li>ignoring auxiliary files created by <code>TeX</code> during the typesetting process or configuration files from the <code>LaTeX</code> editor,</li>
+<li>track changes using commit messages, creating DIFFs and using branches,</li>
+<li>discuss ideas using the build in <code>Wiki</code> and <code>bug tracking</code>/<code>milestone</code> system,</li>
+<li>modern Git-Clients, which make it easy to use for people too shy to use the command line (which is by far not as scary as you might assume).</li>
+</ul>
+
+
+<p>Github offers <em>five free private repositories</em> for students or University associates (<a href="https://education.github.com/">https://education.github.com/</a>).</p>
+
+<p>In this blog post I show how to set up a git repository for a scientific paper, recommend a structure and give examples on how you can use features of <code>GIT</code> and <code>github</code> to boost your productivity! Note that I will demonstrate the use of <code>GIT</code> through the console. You can also use the github app (<a href="https://mac.github.com/">Mac</a>, <a href="https://windows.github.com/">Windows</a>) or any other GUI-<code>GIT</code> client for this.</p>
+
+<h2>Setup</h2>
+
+<h3>Creating the New Repository</h3>
+
+<p><img class="right" src="/media/2014-07-16-use-github-for-scientific-writing/createNewRepo.png" width="300"></p>
+
+<p>Creating a new repository at Github is easy as pie. When you are logged in, you can use the toolbar at the top right corner to create a new repository.</p>
+
+<p><img class="center" src="/media/2014-07-16-use-github-for-scientific-writing/init.png"></p>
+
+<p>In the next window you can create your new repository. Give it a meaningful title and make sure to select the <code>TeX</code> <code>.gitignore</code> template at the bottom. If you want to create a <em>private repository</em>, you can request it using this link: <a href="https://education.github.com/">https://education.github.com/</a>. The people at Github are pretty fast, it took them only a few hours to verify my account.</p>
+
+<p>After you&rsquo;ve created the repository it should look similar to this:
+<img class="center" src="/media/2014-07-16-use-github-for-scientific-writing/init-2.png"></p>
+
+<h3>Add your Files to the Repository</h3>
+
+<p>Chances are that you already wrote some stuff or have unpacked the authors packages of the conference or journal. <code>Git</code> makes it easy to add these files to the existing repository. At first, lets clone the newly created repository. You find the <code>http</code> address to your repository on the right bottom of its <code>github</code> page under <em>HTTPS clone URL</em>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ~/Desktop
+</span><span class='line'><span class="nv">$ </span>git clone https://github.com/Powernap/My-Awesome-Paper.git
+</span><span class='line'>    Cloning into <span class="s1">&#39;My-Awesome-Paper&#39;</span>...
+</span><span class='line'>    remote: Counting objects: 4, <span class="k">done</span>.
+</span><span class='line'>    remote: Compressing objects: 100% <span class="o">(</span>3/3<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>    remote: Total 4 <span class="o">(</span>delta 0<span class="o">)</span>, reused 0 <span class="o">(</span>delta 0<span class="o">)</span>
+</span><span class='line'>    Unpacking objects: 100% <span class="o">(</span>4/4<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>    Checking connectivity... <span class="k">done</span>.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you should have the repository on your desktop. You can add all existing files to the folder via drag and drop. Here are the commands you potentially need to add the new files to the repository:</p>
+
+<ul>
+<li><code>git status</code> is a useful command for checking the current status of a repository is . It also should ignore the files specified in the <code>.gitignore</code> file.</li>
+<li><code>git add &lt;someFile&gt;</code> adds files to a repository</li>
+<li><code>git add -A</code> adds all files and folders listed under <em>untracked files</em></li>
+<li><code>git commit</code> makes a commit to a repository. Note that these commits are still only part of your local copy of the repository &mdash; unlike other versioning systems, such as <code>SVN</code>, you can create commits while being offline.</li>
+<li><code>git push</code> uploads all changes to the repository stored at github.</li>
+</ul>
+
+
+<p>Here is an example for doing this:</p>
+
+<p><img class="right" src="/media/2014-07-16-use-github-for-scientific-writing/folder.png" width="200"></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># You can use any folder you want!</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ~/Desktop/My-Awesome-Paper
+</span><span class='line'><span class="nv">$ </span>git status
+</span><span class='line'>    On branch master
+</span><span class='line'>    Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
+</span><span class='line'>
+</span><span class='line'>    Untracked files:
+</span><span class='line'>      <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>        Example.tex
+</span><span class='line'>        SCITEPRESS.eps
+</span><span class='line'>        SCITEPRESS.sty
+</span><span class='line'>        apalike.bst
+</span><span class='line'>        apalike.sty
+</span><span class='line'>        article.cls
+</span><span class='line'>        example.bib
+</span><span class='line'>
+</span><span class='line'>    nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> to track<span class="o">)</span>
+</span><span class='line'><span class="c"># Now add all files under `Untracked files`</span>
+</span><span class='line'><span class="nv">$ </span>git add -A
+</span><span class='line'><span class="c"># &#39;-m&#39; directly adds the commit message</span>
+</span><span class='line'><span class="nv">$ </span>git commit -m <span class="s2">&quot;Added conference style files&quot;</span>
+</span><span class='line'>    <span class="o">[</span>master f01710d<span class="o">]</span> Added conference style files
+</span><span class='line'>     7 files changed, 2318 insertions<span class="o">(</span>+<span class="o">)</span>
+</span><span class='line'>    create mode 100755 Example.tex
+</span><span class='line'>    create mode 100755 SCITEPRESS.eps
+</span><span class='line'>    create mode 100755 SCITEPRESS.sty
+</span><span class='line'>    create mode 100755 apalike.bst
+</span><span class='line'>    create mode 100755 apalike.sty
+</span><span class='line'>    create mode 100755 article.cls
+</span><span class='line'>    create mode 100755 example.bib
+</span><span class='line'><span class="c"># Now everything is at the &#39;head&#39; of your local copy of the repository. </span>
+</span><span class='line'><span class="c"># Time to push it to the github server!</span>
+</span><span class='line'><span class="nv">$ </span>git push
+</span><span class='line'>    Counting objects: 10, <span class="k">done</span>.
+</span><span class='line'>    Delta compression using up to 8 threads.
+</span><span class='line'>    Compressing objects: 100% <span class="o">(</span>9/9<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>    Writing objects: 100% <span class="o">(</span>9/9<span class="o">)</span>, 382.59 KiB | 0 bytes/s, <span class="k">done</span>.
+</span><span class='line'>    Total 9 <span class="o">(</span>delta 0<span class="o">)</span>, reused 0 <span class="o">(</span>delta 0<span class="o">)</span>
+</span><span class='line'>    To https://github.com/Powernap/My-Awesome-Paper.git
+</span><span class='line'>       0e07357..f01710d  master -&gt; master
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you find it hard to follow, you should look <a href="try.github.io">into this quick tutorial</a>.</p>
+
+<h3>The <code>.gitignore</code> File</h3>
+
+<p>It is a good habit to add a <code>.gitignore</code> file to your repository, which contains a list of files ignored by <code>git</code>. <code>LaTeX</code> produces many auxiliary files during its typesetting process, which differ depending on the OS you use and the installed <code>TeX</code> version. It is a good idea to exclude them, especially when collaborating with other people on a paper. Adding files is straightforward, add file names and separate them using newlines. You can even use wildcards using the <code>*</code> symbol, or exclude entire folders (e.g. <code>output/</code>). Whether to add <code>PDF</code>-files to the repository is a matter of taste. I always commit the current state of my work as pdf because it makes it easy to look at versions of previous commits.</p>
+
+<h2>Use the Power of <code>GIT</code> and <code>github</code></h2>
+
+<p>Once set up, the full power of <code>git</code> and <code>github</code> lies beneath your fingertips.</p>
+
+<h3>Commit often!</h3>
+
+<p>When working with versioning systems, it is recommended to <a href="http://www.databasically.com/2011/03/14/git-commit-early-commit-often/">commit early and often</a>! Changes to the text are by far more comprehensible and it avoids conflicts when working with multiple people on a text!</p>
+
+<p>Updating the repository is straightforward, just run <code>git add &lt;your File&gt;</code>, create a <code>git commit</code> and <code>git push</code> it to the server. If you just want to update all files in the repository, you can use <code>git commit -a</code> instead of tediously <code>git add</code>&lsquo;ing all changed files.</p>
+
+<p>All commits can be viewed at your projects <code>github</code> page.
+<img class="center" src="/media/2014-07-16-use-github-for-scientific-writing/commits.png">
+Here you can see the changes made to the repository in every commit. Each line can also be commented to trigger a discussion or give feedback! These views are called <em>DIFFs</em>.
+<img class="center" src="/media/2014-07-16-use-github-for-scientific-writing/diff.png" width="350"></p>
+
+<h3>Structure your <code>LaTeX</code> Documents</h3>
+
+<p>It is often a good idea to divide your chapters or sections into individual files and include them in a master file via the <code>\input</code> command. A barebone <code>TeX</code> file could look like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'><span class="k">\input</span><span class="nb">{</span>Chapter-1.tex<span class="nb">}</span>
+</span><span class='line'><span class="k">\input</span><span class="nb">{</span>Chapter-2.tex<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Besides keeping the project structured, it reduces the number of conflicts when you also work with co-authors. I also found it useful to separate each sentence in the following way:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\section</span><span class="nb">{</span>Proof of Everything<span class="nb">}</span>
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'><span class="k">\noindent</span> This is my introduction to this chapter.
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'>I divide every sentence with a comment.
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'>This way it is easy to identify huge sentences that are hard to read and to understand and everybody knows how hard these sentences are to find in the text when you have a lot of text and well you know what I mean.
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'>Sentences can also be easily commented out this way.
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'>Changes made to Tex files structured like this are well readable using the github diff view.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Use the Social Features!</h3>
+
+<p><img class="right" src="/media/2014-07-16-use-github-for-scientific-writing/discussion.png" width="400">
+Having all authors of a scientific paper in one place is rare. Exchange of ideas and feedback via email is tedious. The build in <a href="https://help.github.com/articles/about-github-wikis"><code>Wiki</code></a> for each repository is a great way for collecting and summarizing ideas. Even in public repositories you can restrict access to the wiki to collaborators only if you want to keep it more private.</p>
+
+<p>The <code>issue</code> and <code>milestone</code> system is packed with useful features for discussing the current process of the work. Discussions can even be referenced to commits. All information is kept at one place, communication is synchronized and you don&rsquo;t need to look up old mails with chunks of information any more!</p>
+
+<h3>Use Branches</h3>
+
+<p>Say you want to write a new section, but it will take a couple of days. At the same time, you do not want to change the repository all the time, forcing your co-authors to <code>git pull</code> every time they also want to edit the paper. <code>GIT</code> was designed with such cases in mind! You can simply create a your own sub-repository, called a <code>branch</code>, edit it and merge it together with the master-branch.</p>
+
+<p><img class="right" src="/media/2014-07-16-use-github-for-scientific-writing/branch.png" width="200"></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># Create new &#39;my-section&#39; branch</span>
+</span><span class='line'><span class="nv">$ </span>git branch my-section
+</span><span class='line'><span class="c"># List all branches</span>
+</span><span class='line'><span class="nv">$ </span>git branch
+</span><span class='line'>  * master
+</span><span class='line'>    my-section
+</span><span class='line'><span class="c"># Switch to &#39;my-section&#39; branch</span>
+</span><span class='line'><span class="nv">$ </span>git checkout my-section
+</span><span class='line'>  Switched to branch <span class="s1">&#39;my-section&#39;</span>
+</span><span class='line'><span class="c"># Make changes and upload them (-a adds all locally changed files to the repo)</span>
+</span><span class='line'><span class="nv">$ </span>git add my-section.tex
+</span><span class='line'><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;added my new section&quot;</span>
+</span><span class='line'>  <span class="o">[</span>my-section fce493f<span class="o">]</span> added my new section
+</span><span class='line'>   2 files changed, 9 insertions<span class="o">(</span>+<span class="o">)</span>
+</span><span class='line'>   create mode 100644 my-section.tex
+</span><span class='line'><span class="c"># Switch back to the Master branch and merge the sections</span>
+</span><span class='line'><span class="nv">$ </span>git checkout master
+</span><span class='line'>  Switched to branch <span class="s1">&#39;master&#39;</span>
+</span><span class='line'>  Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
+</span><span class='line'><span class="nv">$ </span>git merge my-section
+</span><span class='line'>  Updating f01710d..fce493f
+</span><span class='line'>  Fast-forward
+</span><span class='line'>   Example.tex    | 1 +
+</span><span class='line'>   my-section.tex | 8 ++++++++
+</span><span class='line'>   2 files changed, 9 insertions<span class="o">(</span>+<span class="o">)</span>
+</span><span class='line'>   create mode 100644 my-section.tex
+</span><span class='line'><span class="nv">$ </span>git push
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Create Releases</h3>
+
+<p><img class="right" src="/media/2014-07-16-use-github-for-scientific-writing/releases.png" width="350">
+<code>Releases</code> are a great feature to freeze commits. I use it to save important milestones, such as the blind submission for reviewing.</p>
+
+<h3>Use All the Features!</h3>
+
+<p>Just kidding. But <code>github</code> offers a ton of other features I did not cover in this post. To get an impression about <code>githubs</code> power, head over to its <a href="https://github.com/features">feature page</a>.</p>
+
+<p>They even work on their own editor <a href="atom.io">Atom</a>, which <a href="http://discuss.atom.io/t/latex-language-support/541">supports LaTeX</a> but still is not functional as the packages in <a href="https://github.com/textmate/textmate">Textmate</a> or <a href="http://www.sublimetext.com/">Sublime Text</a>.</p>
+
+<h2>Closing Remarks</h2>
+
+<p>There is no <em>right</em> way to write. All these examples are based on my own experience, my own way to work and what I found enough to share it with you. Surely there are much more different ways to use <code>GIT</code> and <code>github</code> for writing. Also, there are great cloud-based LaTeX editors, which also allow collaborative editing (e.g. <a href="https://www.sharelatex.com/">ShareLaTeX</a>). Please feel free to make remarks in the comment section!</p>
+
+<p>Since I feel that openness plays a crucial role in scientific research, we do good in using these systems and break out of our isolated bubbles and have open discussions about our work and how it develops. Tools like <code>github</code> allow us to do so!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -725,6 +1079,10 @@ To give an example for a converted UI file which runs, look at the following cod
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/07/16/use-github-for-scientific-writing/">Use Github for Scientific Writing</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/12/07/watch-twitch-using-vlc-in-osx/">Watch Twitch using VLC in OS X</a>
