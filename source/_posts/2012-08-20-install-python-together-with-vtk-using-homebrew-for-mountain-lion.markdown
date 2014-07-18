@@ -81,7 +81,7 @@ When this is done you should be able to `import vtk` into your `Python` environm
 
 Setup Python for use with Eclipse
 ---------------------------------
-This part is oriented on the introduction on how to include the `DRE` into `Eclipse`, which can be found under [[4]](http://code.google.com/p/devide/wiki/EclipseDRE) and in the following screencast. I just made a few enhancements to make it work for this application. Note that the steps of the screencast don't work exactly on our installation!<iframe width="420" height="315" src="http://www.youtube.com/embed/-b1zS536R2M" frameborder="0" allowfullscreen></iframe>
+This part is oriented on the introduction on how to include the `DRE` into `Eclipse`, which can be found under [[4]](http://code.google.com/p/devide/wiki/EclipseDRE) and in the following screencast. I just made a few enhancements to make it work for this application. Note that the steps of the screencast don't work exactly on our installation!<iframe width="420" height="315" src="https://www.youtube.com/embed/-b1zS536R2M" frameborder="0" allowfullscreen></iframe>
 
 To use `Python` together with `Eclipse` you have to install the *Classic* Version from [the official homepage](http://www.eclipse.org/downloads/). Next, [install PyDev into Eclipse](http://pydev.org/manual_101_install.html). Now you need to tell `Eclipse` which `Python` installation it should use. This can be done in `Eclipse → Settings → Pydev → Interpreter-Python → New`. In the next Dialog you have to add Path to the Homebrew `Python`.
 {% img center /media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonInterpreter.png %}
