@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Qt | Zenf]]></title>
   <link href="http://Powernap.github.io/blog/categories/qt/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
-  <updated>2014-07-18T15:12:21+02:00</updated>
+  <updated>2014-07-18T15:13:03+02:00</updated>
   <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -99,7 +99,7 @@ This took about 60 minutes on my early 2008 Macbook Pro, so take your time for a
 
 <h2>Setup Python for use with Eclipse</h2>
 
-<p>This part is oriented on the introduction on how to include the <code>DRE</code> into <code>Eclipse</code>, which can be found under <a href="http://code.google.com/p/devide/wiki/EclipseDRE">[4]</a> and in the following screencast. I just made a few enhancements to make it work for this application. Note that the steps of the screencast don&rsquo;t work exactly on our installation!<iframe width="420" height="315" src="http://www.youtube.com/embed/-b1zS536R2M" frameborder="0" allowfullscreen></iframe></p>
+<p>This part is oriented on the introduction on how to include the <code>DRE</code> into <code>Eclipse</code>, which can be found under <a href="http://code.google.com/p/devide/wiki/EclipseDRE">[4]</a> and in the following screencast. I just made a few enhancements to make it work for this application. Note that the steps of the screencast don&rsquo;t work exactly on our installation!<iframe width="420" height="315" src="https://www.youtube.com/embed/-b1zS536R2M" frameborder="0" allowfullscreen></iframe></p>
 
 <p>To use <code>Python</code> together with <code>Eclipse</code> you have to install the <em>Classic</em> Version from <a href="http://www.eclipse.org/downloads/">the official homepage</a>. Next, <a href="http://pydev.org/manual_101_install.html">install PyDev into Eclipse</a>. Now you need to tell <code>Eclipse</code> which <code>Python</code> installation it should use. This can be done in <code>Eclipse → Settings → Pydev → Interpreter-Python → New</code>. In the next Dialog you have to add Path to the Homebrew <code>Python</code>.
 <img class="center" src="/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonInterpreter.png">
