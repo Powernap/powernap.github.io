@@ -4,7 +4,7 @@
   <title><![CDATA[Category: GIT | Zenf]]></title>
   <link href="http://Powernap.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
-  <updated>2014-07-18T14:08:02+02:00</updated>
+  <updated>2014-07-18T14:17:35+02:00</updated>
   <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -18,7 +18,7 @@
     <link href="http://Powernap.github.io/blog/2014/07/16/use-github-for-scientific-writing/"/>
     <updated>2014-07-16T16:36:35+02:00</updated>
     <id>http://Powernap.github.io/blog/2014/07/16/use-github-for-scientific-writing</id>
-    <content type="html"><![CDATA[<p><strong>tl;dr:</strong> <em><code>GIT</code> is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools supporting collaborative work makes <code>github</code> a good place for storing all information there provide an effective communication plattform.</em></p>
+    <content type="html"><![CDATA[<p><strong>tl;dr:</strong> <em><code>GIT</code> is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools supporting collaborative work makes <code>github</code> a good place for storing all information there.</em></p>
 
 <hr />
 
