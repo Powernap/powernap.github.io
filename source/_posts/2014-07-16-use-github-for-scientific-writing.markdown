@@ -4,19 +4,19 @@ title: "Use Github for Scientific Writing"
 date: 2014-07-16 16:36:35 +0200
 comments: true
 categories: GIT GITHUB Scientific-Writing
-published: false
+published: true
 ---
 
-**tl;dr:** *`GIT` is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools supporting collaborative work makes `github` a good place for storing all information there provide an effective communication plattform.* 
+**tl;dr:** *`GIT` is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools supporting collaborative work makes `github` a good place for storing all information there.* 
 
 ----
 <br>
 {% img right /media/2014-07-16-use-github-for-scientific-writing/gitlab.png 200 %}
 There are many reasons why I adore `github`! For me, it stands for all the good things associated with open content -- the beautiful mindset behind it where many people participate to create amazing things! Openness, which is still largely missing in scientific research.
 
-Collaborative work on scientific paper is carried out in the worst case by emailing `LaTeX` code. I don't think I have to talk about the disadvantages of this approach. Tools like [Dropbox](www.dropbox.com) allow to share folders with different users, but also have major disadvantages. They share everything in a folder, regardless of source files or auxiliary files created during the typesetting process. Many `LaTeX` editors store configuration files in the project folders and are therefore synced as well. And the constant dropbox pop-up informing me that someone currently works on a text is maddening.
+Collaborative work on a scientific paper is carried out in the worst case by emailing `LaTeX` code. I don't think I have to talk about the disadvantages of this approach. Tools like [Dropbox](www.dropbox.com) allow to share folders with different users, but also have major disadvantages. They share everything in a folder, regardless of source files or auxiliary files created during the typesetting process. Many `LaTeX` editors store configuration files in the project folders and are therefore synced as well. And the constant dropbox pop-up informing me that someone currently works on a text is maddening.
 
-`GIT` was designed for code-projects, but also works very well for the scientific writing process. If you are new to `GIT`, check out this great interactive tutorial, teaching you everything you need to know in about 15 minutes at [try.github.io](try.github.io).
+`GIT` was designed for code-projects, but also works very well for the scientific writing process. If you are new to `GIT`, check out this great interactive tutorial, teaching you everything you need to know in about 15 minutes at [try.github.io](https://try.github.io).
 
 To clarify: `GIT` is the name of the *versioning system*, `github` is a web site for storing `GIT`-repositories and it comes with additional features. The major advantages of `GIT`/`github` include:
 
@@ -25,9 +25,10 @@ To clarify: `GIT` is the name of the *versioning system*, `github` is a web site
   * discuss ideas using the build in `Wiki` and `bug tracking`/`milestone` system,
   * modern Git-Clients, which make it easy to use for people too shy to use the command line (which is by far not as scary as you might assume).
 
-Github offers *five free private repositories* for students or University associates ([https://education.github.com/](https://education.github.com/)).
+`Github` repositories are by default open for everyone to see. If you don't want that, you have to create a private repository.
+`Github` offers *five free private repositories* for students or University associates ([https://education.github.com/](https://education.github.com/)).
 
-In this blog post I show how to set up a git repository for a scientific paper, recommend a structure and give examples on how you can use features of `GIT` and `github` to boost your productivity! Note that I will demonstrate the use of `GIT` through the console. You can also use the github app ([Mac](https://mac.github.com/), [Windows](https://windows.github.com/)) or any other GUI-`GIT` client for this.
+In this blog post I show how to set up a git repository for a scientific paper, recommend a structure and give examples on how you can use features of `GIT` and `github` to boost your productivity! Note that I will demonstrate the use of `GIT` through the console. You can also use the github app ([Mac](https://mac.github.com/), [Windows](https://windows.github.com/)) or any other `GIT` client for this.
 
 ## Setup
 
@@ -113,7 +114,7 @@ $ git push
     To https://github.com/Powernap/My-Awesome-Paper.git
        0e07357..f01710d  master -> master
 {% endcodeblock %}
-If you find it hard to follow, you should look [into this quick tutorial](try.github.io).
+If you find it hard to follow, you should look [into this quick tutorial](https://try.github.io).
 
 ### The `.gitignore` File
 
@@ -168,7 +169,7 @@ Having all authors of a scientific paper in one place is rare. Exchange of ideas
 The `issue` and `milestone` system is packed with useful features for discussing the current process of the work. Discussions can even be referenced to commits. All information is kept at one place, communication is synchronized and you don't need to look up old mails with chunks of information any more!
 
 ### Use Branches
-Say you want to write a new section, but it will take a couple of days. At the same time, you do not want to change the repository all the time, forcing your co-authors to `git pull` every time they also want to edit the paper. `GIT` was designed with such cases in mind! You can simply create a your own sub-repository, called a `branch`, edit it and merge it together with the master-branch.
+Say you want to write a new section, but it will take a couple of days. At the same time, you do not want to change the repository all the time, forcing your co-authors to `git pull` every time they also want to edit the paper. `GIT` was designed with such cases in mind! You can simply create your own sub-repository, called a `branch`, edit it and merge it together with the master-branch.
 
 {% img right /media/2014-07-16-use-github-for-scientific-writing/branch.png 200 %}
 {% codeblock lang:bash %}
@@ -208,7 +209,7 @@ $ git push
 ### Use All the Features!
 Just kidding. But `github` offers a ton of other features I did not cover in this post. To get an impression about `githubs` power, head over to its [feature page](https://github.com/features). 
 
-They even work on their own editor [Atom](atom.io), which [supports LaTeX](http://discuss.atom.io/t/latex-language-support/541) but still is not functional as the packages in [Textmate](https://github.com/textmate/textmate) or [Sublime Text](http://www.sublimetext.com/).
+They even work on their own editor [Atom](https://atom.io), which [supports LaTeX](http://discuss.atom.io/t/latex-language-support/541) but isn't as functional as the packages in [Textmate](https://github.com/textmate/textmate) or [Sublime Text](http://www.sublimetext.com/).
 
 ## Closing Remarks
 There is no *right* way to write. All these examples are based on my own experience, my own way to work and what I found enough to share it with you. Surely there are much more different ways to use `GIT` and `github` for writing. Also, there are great cloud-based LaTeX editors, which also allow collaborative editing (e.g. [ShareLaTeX](https://www.sharelatex.com/)). Please feel free to make remarks in the comment section!
