@@ -24,17 +24,29 @@
   <link href="/atom.xml" rel="alternate" title="Zenf" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53031736-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
-<body   class="collapse-sidebar sidebar-footer" >
+<body    class="collapse-sidebar sidebar-footer" >
   <header role="banner"><hgroup>
   <h1><a href="/">Zenf</a></h1>
   
@@ -78,7 +90,6 @@
   
 </article>
 
-
 </div>
 
 <aside class="sidebar">
@@ -92,11 +103,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2013/12/07/watch-twitch-using-vlc-in-osx/">Watch Twitch using VLC in OS X</a>
+        <a href="/blog/2013/12/07/watch-twitch-using-vlc-in-osx/">Watch Twitch Using VLC in OS X</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/">Install Python with VTK and Qt support for use with Eclipse in OS X Mountain Lion</a>
+        <a href="/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/">Install Python With VTK and Qt Support for Use With Eclipse in OS X Mountain Lion</a>
       </li>
     
   </ul>
@@ -128,7 +139,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'https://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -137,8 +148,13 @@
 
 
 
-
-
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
 
 
 
@@ -147,7 +163,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

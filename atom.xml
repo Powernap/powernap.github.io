@@ -4,7 +4,7 @@
   <title><![CDATA[Zenf]]></title>
   <link href="http://Powernap.github.io/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
-  <updated>2014-07-18T15:13:03+02:00</updated>
+  <updated>2014-07-21T10:43:46+02:00</updated>
   <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -340,7 +340,7 @@ Having all authors of a scientific paper in one place is rare. Exchange of ideas
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Watch Twitch using VLC in OS X]]></title>
+    <title type="html"><![CDATA[Watch Twitch Using VLC in OS X]]></title>
     <link href="http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx/"/>
     <updated>2013-12-07T00:20:42+01:00</updated>
     <id>http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx</id>
@@ -448,7 +448,7 @@ All you have to to is go into the <code>Terminal.app</code> and type</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Install Python with VTK and Qt support for use with Eclipse in OS X Mountain Lion]]></title>
+    <title type="html"><![CDATA[Install Python With VTK and Qt Support for Use With Eclipse in OS X Mountain Lion]]></title>
     <link href="http://Powernap.github.io/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/"/>
     <updated>2012-08-20T10:04:00+02:00</updated>
     <id>http://Powernap.github.io/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion</id>
