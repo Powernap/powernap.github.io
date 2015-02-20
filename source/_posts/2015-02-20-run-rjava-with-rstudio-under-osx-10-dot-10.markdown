@@ -13,7 +13,7 @@ I've had some trouble getting rJava to run with RStudio. My current solution is 
 
 The first thing I did was installing and running `rJava` through `RStudio` and attempt to load it.
 
-{% codeblock lang:R %}
+{% codeblock lang:r %}
 install.packages('rJava')
 # a bunch of output follows
 # ...
