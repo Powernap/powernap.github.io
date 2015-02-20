@@ -39,14 +39,12 @@ rdiscount:
     - autolink
     - footnotes
     - smart
-highlighter: pygments # default python pygments have been replaced by pygments.rb
+pygments: false # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index
-paginate_path: "posts/:num"  # Directory base for pagination URLs eg. /posts/2/
+pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
-sidebar: collapse
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
-excerpt_separator: "<!--more-->"
 
 titlecase: true       # Converts page and post titles to titlecase
 
@@ -71,11 +69,11 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user: Powern4p
+twitter_user:
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: true
+google_plus_one: false
 google_plus_one_size: medium
 
 # Google Plus Profile
@@ -96,7 +94,7 @@ disqus_short_name: Zenf
 disqus_show_comment_count: true
 
 # Google Analytics
-google_analytics_tracking_id: UA-53031736-1
+google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false

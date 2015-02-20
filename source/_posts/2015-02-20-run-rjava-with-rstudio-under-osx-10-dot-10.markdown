@@ -9,11 +9,11 @@ published: true
 
 # The Problem
 
-I've had some trouble getting rJava to run with RStudio. My current solution is a small workaround based on [this post on the `RStudio` support pages](https://support.rstudio.com/hc/communities/public/questions/203781666-rJava-not-loading-in-RStudio-Mac-OS-X-10-10-but-loading-in-terminal).
+I've had some trouble getting rJava to run with RStudio. My current solution is a small workaround based on [this post on the RStudio support pages](https://support.rstudio.com/hc/communities/public/questions/203781666-rJava-not-loading-in-RStudio-Mac-OS-X-10-10-but-loading-in-terminal).
 
 The first thing I did was installing and running `rJava` through `RStudio` and attempt to load it.
 
-{% codeblock lang:r %}
+{% codeblock lang:R %}
 install.packages('rJava')
 # a bunch of output follows
 # ...
@@ -47,7 +47,7 @@ $ /usr/libexec/java_home
 /Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home
 {% endcodeblock %}
 
-By the way, you can also use [`/usr/libexec/java_home`](https://stackoverflow.com/questions/21964709/how-to-change-default-java-version) to switch your java version if you wish.
+By the way, you can also use [`/usr/libexec/java_home`](https://stackoverflow.com/questions/21964709/how-to-change-default-java-version) to [switch your java version](https://stackoverflow.com/questions/21964709/how-to-change-default-java-version) if you wish. You can also download the newest `jre` from the Oracle [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 
 If the output is similar to the one above you should be fine!
 
@@ -59,7 +59,7 @@ Now you open `RStudio` through the terminal using the following command, which s
 $ LD_LIBRARY_PATH=$(/usr/libexec/java_home)/jre/lib/server: open -a RStudio
 {% endcodeblock %}
 
-`RStudio` should launch, and now loading `library(rJava)` should work just fine! If you want to use `rJava` with `RStudio`, you have to run it using this command (until they hopefully fix it!)
+`RStudio` launches. Loading `library(rJava)` should work just fine! *If you want to use `rJava` with `RStudio`, you have to run it using this command (until they hopefully fix it!)*
 
 ## Make an Alias for the new Command with your Shell
 
@@ -70,5 +70,4 @@ alias rstudio='LD_LIBRARY_PATH=$(/usr/libexec/java_home)/jre/lib/server: open -a
 {% endcodeblock %}
 
 # Thats it
-
 I hope this gets fixed soon. Until then, hopefully my workaround works for you guys! See you :).
