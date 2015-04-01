@@ -4,7 +4,7 @@
   <title><![CDATA[Category: GIT | Zenf]]></title>
   <link href="http://Powernap.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://Powernap.github.io/"/>
-  <updated>2015-02-20T16:27:27+01:00</updated>
+  <updated>2015-04-01T14:17:51+02:00</updated>
   <id>http://Powernap.github.io/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -398,6 +398,11 @@ Having all authors of a scientific paper in one place is rare. Exchange of ideas
 <p>There is no <em>right</em> way to write. All these examples are based on my own experience, my own way to work and what I found enough to share it with you. Surely there are much more different ways to use <code>GIT</code> and <code>github</code> for writing. Also, there are great cloud-based LaTeX editors, which also allow collaborative editing (e.g. <a href="https://www.sharelatex.com/">ShareLaTeX</a>). Please feel free to make remarks in the comment section!</p>
 
 <p>Since I feel that openness plays a crucial role in scientific research, we do good in using these systems and break out of our isolated bubbles and have open discussions about our work and how it develops. Tools like <code>github</code> allow us to do so!</p>
+
+<h2>Encore</h2>
+
+<p>This is what reviewing revisions can look like if your co-authors use this workflow. I find this pretty awesome &lt;3.
+<img src="/media/2014-07-16-use-github-for-scientific-writing/comparison.gif"></p>
 ]]></content>
   </entry>
   
