@@ -7,7 +7,7 @@ categories: GIT GITHUB Scientific-Writing
 published: true
 ---
 
-**tl;dr:** *`GIT` is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools supporting collaborative work makes `github` a good place for storing all information there.* 
+**tl;dr:** *`GIT` is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools supporting collaborative work makes `github` a good place for storing all information there.*
 
 ----
 <br>
@@ -50,7 +50,7 @@ After you've created the repository it should look similar to this:
 Chances are that you already wrote some stuff or have unpacked the authors packages of the conference or journal. `Git` makes it easy to add these files to the existing repository. At first, lets clone the newly created repository. You find the `http` address to your repository on the right bottom of its `github` page under *HTTPS clone URL*.
 
 {% codeblock lang:bash %}
-$ cd ~/Desktop 
+$ cd ~/Desktop
 $ git clone https://github.com/Powernap/My-Awesome-Paper.git
     Cloning into 'My-Awesome-Paper'...
     remote: Counting objects: 4, done.
@@ -77,10 +77,10 @@ $ cd ~/Desktop/My-Awesome-Paper
 $ git status
     On branch master
     Your branch is up-to-date with 'origin/master'.
-    
+
     Untracked files:
       (use "git add <file>..." to include in what will be committed)
-    
+
         Example.tex
         SCITEPRESS.eps
         SCITEPRESS.sty
@@ -88,7 +88,7 @@ $ git status
         apalike.sty
         article.cls
         example.bib
-    
+
     nothing added to commit but untracked files present (use "git add" to track)
 # Now add all files under `Untracked files`
 $ git add -A
@@ -103,7 +103,7 @@ $ git commit -m "Added conference style files"
     create mode 100755 apalike.sty
     create mode 100755 article.cls
     create mode 100755 example.bib
-# Now everything is at the 'head' of your local copy of the repository. 
+# Now everything is at the 'head' of your local copy of the repository.
 # Time to push it to the github server!
 $ git push
     Counting objects: 10, done.
@@ -207,7 +207,7 @@ $ git push
 `Releases` are a great feature to freeze commits. I use it to save important milestones, such as the blind submission for reviewing.
 
 ### Use All the Features!
-Just kidding. But `github` offers a ton of other features I did not cover in this post. To get an impression about `githubs` power, head over to its [feature page](https://github.com/features). 
+Just kidding. But `github` offers a ton of other features I did not cover in this post. To get an impression about `githubs` power, head over to its [feature page](https://github.com/features).
 
 They even work on their own editor [Atom](https://atom.io), which [supports LaTeX](http://discuss.atom.io/t/latex-language-support/541) but isn't as functional as the packages in [Textmate](https://github.com/textmate/textmate) or [Sublime Text](http://www.sublimetext.com/).
 
@@ -215,3 +215,7 @@ They even work on their own editor [Atom](https://atom.io), which [supports LaTe
 There is no *right* way to write. All these examples are based on my own experience, my own way to work and what I found enough to share it with you. Surely there are much more different ways to use `GIT` and `github` for writing. Also, there are great cloud-based LaTeX editors, which also allow collaborative editing (e.g. [ShareLaTeX](https://www.sharelatex.com/)). Please feel free to make remarks in the comment section!
 
 Since I feel that openness plays a crucial role in scientific research, we do good in using these systems and break out of our isolated bubbles and have open discussions about our work and how it develops. Tools like `github` allow us to do so!
+
+## Encore
+This is what reviewing revisions can look like if your co-authors use this workflow. I find this pretty awesome <3.
+{% img /media/2014-07-16-use-github-for-scientific-writing/comparison.gif %}
