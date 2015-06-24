@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rtmpdump | Zenf]]></title>
+  <link href="http://Powernap.github.io/blog/categories/rtmpdump/atom.xml" rel="self"/>
+  <link href="http://Powernap.github.io/"/>
+  <updated>2015-04-01T14:17:51+02:00</updated>
+  <id>http://Powernap.github.io/</id>
+  <author>
+    <name><![CDATA[Paul Klemm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Watch Twitch using VLC in OS X]]></title>
+    <link href="http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx/"/>
+    <updated>2013-12-07T00:20:42+01:00</updated>
+    <id>http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx</id>
+    <content type="html"><![CDATA[<p>If you own a Retina-Macbook you problably struggle with fairly high CPU load and bad performance when watching Twitch-channels using the standard flash-based player in the browser.</p>
+
+<p>A tool called <code>livestreamer</code> can be used to bring Twitch streams to the beloved VLC player (which also uses the GPU to process videos). This way you are not just able to reduce the used resources, the streams also feel much smoother, especially for high resolutions.</p>
+
+<p><em>Twitch will not be able to stream ads if you use this solution.</em>
+<em>Please be fair and subscribe to channels you like and you support.</em></p>
+
+<p><strong>[Update 2014-02-20]</strong></p>
+
+<p>If you are using the glorious <a href="http://www.alfredapp.com">Alfred App</a> you might be interested in this workflow, which allows for the same thing: <a href="http://www.packal.org/workflow/twitchstreamer">http://www.packal.org/workflow/twitchstreamer</a>.</p>
+
+<p><strong>[Update 2014-03-06]</strong></p>
+
+<p>Added updating instructions.</p>
+
+<h2>Install Livestreamer</h2>
+
+<ul>
+<li>Download and install <code>rtmpdump</code> from <a href="http://trick77.com/wp-content/uploads/2008/01/rtmpdump-2.4_mac_os.zip">here</a></li>
+<li>Download <code>python-setuptools</code> from <a href="https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea">here</a></li>
+<li>Open <code>Terminal.app</code></li>
+<li>Navigate to the folder where you downloaded the Egg-File and install it
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Downloads
+</span><span class='line'>sh setuptools-0.6c11-py2.7.egg
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Maybe you need to run it as sudo &amp;ndash; &lt;code&gt;sudo sh setuptools-0.6c11-py2.7.egg&lt;/code&gt;&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+<li>Clone <code>Livestreamer</code> GIT Repository and install <code>Livestreamer</code>
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone git://github.com/chrippa/livestreamer.git
+</span><span class='line'><span class="nb">cd </span>livestreamer
+</span><span class='line'>python setup.py install
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Again, maybe you need to run it as sudo &amp;ndash; &lt;code&gt;sudo python setup.py install&lt;/code&gt;&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p></li>
+</ul>
+
+
+<p>Now you should be able to view Twitch channels in VLC</p>
+
+<h2>Using Livestreamer</h2>
+
+<p>Say you want to view this Twitch channel in VLC: <a href="http://www.twitch.tv/wcs_europe">http://www.twitch.tv/wcs_europe</a>.
+All you have to to is go into the <code>Terminal.app</code> and type
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>livestreamer &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;http://www.twitch.tv/wcs_europe&quot;</span>&gt;http://www.twitch.tv/wcs_europe&lt;/a&gt; <span class="o">[</span>quality<span class="o">]</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;You might as well skip the &lt;code&gt;http://www.&lt;/code&gt; part&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+Here, <code>[quality]</code> has to be a quality setting from the stream, usually ranging between <code>low</code>, <code>medium</code>, <code>high</code> and <code>source</code>. If you leave it empty, <code>livestreamer</code> will tell you, which options you can choose from. Setting the parameter to <code>best</code> tells <code>livestreamer</code> to use the highest quality available.</p>
+
+<p>Et voilá. Enjoy your stream.
+<img class="center" src="/media/2013-12-07-watch-twitch-using-vlc-in-osx/twitch-vlc-sc2_small.png"></p>
+
+<h2>Update Livestreamer</h2>
+
+<p>If you see a message like this when launching <code>livestreamer</code> you might update to the latest version:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>cli<span class="o">][</span>info<span class="o">]</span> A new version of Livestreamer <span class="o">(</span>1.7.4<span class="o">)</span> is available!
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>To do so, navigate to any folder, for example <code>~/Downloads</code>, and run the following commands:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Downloads
+</span><span class='line'>git clone git://github.com/chrippa/livestreamer.git
+</span><span class='line'><span class="nb">cd </span>livestreamer
+</span><span class='line'>python setup.py install
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>After that you can remove the livestreamer folder from the folder you cloned the GIT repository to (<code>~/Downloads/livestreamer</code> in our example).</p>
+
+<h1>References</h1>
+
+<ul>
+<li>Links and instructions how to install everything is taken from different Posts in this <a href="http://forum.gamesports.net/dota/showthread.php?45027-How-to-watch-Twitch-TV-in-VLC-player-(MAC-OSX-HOW-TO">Gamespot Thread</a></li>
+<li>For further information, visit <a href="http://livestreamer.tanuki.se/en/latest/">this site from the livestreamer developer</a>, which offers more detailed instructions</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
