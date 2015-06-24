@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Watch Twitch using VLC in OS X - Zenf</title>
+  <meta name="author" content="Paul Klemm">
+
+  
+  <meta name="description" content="If you own a Retina-Macbook you problably struggle with fairly high CPU load and bad performance when watching Twitch-channels using the standard &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Zenf" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Zenf</a></h1>
+  
+    <h2>Paul puts in his two cents</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:Powernap.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Watch Twitch Using VLC in OS X</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T00:20:42+01:00" pubdate data-updated="true">Dec 7<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>If you own a Retina-Macbook you problably struggle with fairly high CPU load and bad performance when watching Twitch-channels using the standard flash-based player in the browser.</p>
+
+<p>A tool called <code>livestreamer</code> can be used to bring Twitch streams to the beloved VLC player (which also uses the GPU to process videos). This way you are not just able to reduce the used resources, the streams also feel much smoother, especially for high resolutions.</p>
+
+<p><em>Twitch will not be able to stream ads if you use this solution.</em>
+<em>Please be fair and subscribe to channels you like and you support.</em></p>
+
+<p><strong>[Update 2014-02-20]</strong></p>
+
+<p>If you are using the glorious <a href="http://www.alfredapp.com">Alfred App</a> you might be interested in this workflow, which allows for the same thing: <a href="http://www.packal.org/workflow/twitchstreamer">http://www.packal.org/workflow/twitchstreamer</a>.</p>
+
+<p><strong>[Update 2014-03-06]</strong></p>
+
+<p>Added updating instructions.</p>
+
+<h2>Install Livestreamer</h2>
+
+<ul>
+<li>Download and install <code>rtmpdump</code> from <a href="http://trick77.com/wp-content/uploads/2008/01/rtmpdump-2.4_mac_os.zip">here</a></li>
+<li>Download <code>python-setuptools</code> from <a href="https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea">here</a></li>
+<li>Open <code>Terminal.app</code></li>
+<li>Navigate to the folder where you downloaded the Egg-File and install it</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Downloads
+</span><span class='line'>sh setuptools-0.6c11-py2.7.egg
+</span><span class='line'><span class="c"># Maybe you need to run it as sudo - `sudo sh setuptools-0.6c11-py2.7.egg`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Clone <code>Livestreamer</code> GIT Repository and install <code>Livestreamer</code></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone git://github.com/chrippa/livestreamer.git
+</span><span class='line'><span class="nb">cd </span>livestreamer
+</span><span class='line'>python setup.py install
+</span><span class='line'><span class="c"># Again, maybe you need to run it as sudo - `sudo python setup.py install`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you should be able to view Twitch channels in VLC</p>
+
+<h2>Using Livestreamer</h2>
+
+<p>Say you want to view this Twitch channel in VLC: <a href="http://www.twitch.tv/wcs_europe">http://www.twitch.tv/wcs_europe</a>.
+All you have to to is go into the <code>Terminal.app</code> and type</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>livestreamer http://www.twitch.tv/wcs_europe <span class="o">[</span>quality<span class="o">]</span>
+</span><span class='line'><span class="c"># You might as well skip the `http://www.` part</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here, <code>[quality]</code> has to be a quality setting from the stream, usually ranging between <code>low</code>, <code>medium</code>, <code>high</code> and <code>source</code>. If you leave it empty, <code>livestreamer</code> will tell you, which options you can choose from. Setting the parameter to <code>best</code> tells <code>livestreamer</code> to use the highest quality available.</p>
+
+<p>Et voilá. Enjoy your stream.
+<img class="center" src="/media/2013-12-07-watch-twitch-using-vlc-in-osx/twitch-vlc-sc2_small.png"></p>
+
+<h2>Update Livestreamer</h2>
+
+<p>If you see a message like this when launching <code>livestreamer</code> you might update to the latest version:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>cli<span class="o">][</span>info<span class="o">]</span> A new version of Livestreamer <span class="o">(</span>1.7.4<span class="o">)</span> is available!
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To do so, navigate to any folder, for example <code>~/Downloads</code>, and run the following commands:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Downloads
+</span><span class='line'>git clone git://github.com/chrippa/livestreamer.git
+</span><span class='line'><span class="nb">cd </span>livestreamer
+</span><span class='line'>python setup.py install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that you can remove the livestreamer folder from the folder you cloned the GIT repository to (<code>~/Downloads/livestreamer</code> in our example).</p>
+
+<h1>References</h1>
+
+<ul>
+<li>Links and instructions how to install everything is taken from different Posts in this <a href="http://forum.gamesports.net/dota/showthread.php?45027-How-to-watch-Twitch-TV-in-VLC-player-(MAC-OSX-HOW-TO">Gamespot Thread</a></li>
+<li>For further information, visit <a href="http://livestreamer.tanuki.se/en/latest/">this site from the livestreamer developer</a>, which offers more detailed instructions</li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Paul Klemm</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T00:20:42+01:00" pubdate data-updated="true">Dec 7<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/homebrew/'>Homebrew</a>, <a class='category' href='/blog/categories/osx/'>OSX</a>, <a class='category' href='/blog/categories/twitch/'>Twitch</a>, <a class='category' href='/blog/categories/vlc/'>VLC</a>, <a class='category' href='/blog/categories/livestreamer/'>livestreamer</a>, <a class='category' href='/blog/categories/rtmpdump/'>rtmpdump</a>, <a class='category' href='/blog/categories/streaming/'>streaming</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx/" data-via="" data-counturl="http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/" title="Previous Post: Install Python with VTK and Qt support for use with Eclipse in OS X Mountain Lion">&laquo; Install Python with VTK and Qt support for use with Eclipse in OS X Mountain Lion</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/07/16/use-github-for-scientific-writing/" title="Next Post: Use Github for Scientific Writing">Use Github for Scientific Writing &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/">Run rJava with RStudio under OSX 10.10</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/07/16/use-github-for-scientific-writing/">Use Github for Scientific Writing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/07/watch-twitch-using-vlc-in-osx/">Watch Twitch using VLC in OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/">Install Python with VTK and Qt support for use with Eclipse in OS X Mountain Lion</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Paul Klemm -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Zenf';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx/';
+        var disqus_url = 'http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
