@@ -2,42 +2,42 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
-            http://paulklemm.github.io/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/
+            http://Powernap.github.io/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/
         </loc>
-        <lastmod>2015-06-24T14:12:12+02:00</lastmod>
+        <lastmod>2015-02-20T16:18:26+01:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx/</loc>
-        <lastmod>2015-06-24T14:12:12+02:00</lastmod>
+        <loc>http://Powernap.github.io/blog/2013/12/07/watch-twitch-using-vlc-in-osx/</loc>
+        <lastmod>2015-02-20T16:18:26+01:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/blog/2014/07/16/use-github-for-scientific-writing/</loc>
-        <lastmod>2015-06-24T14:12:12+02:00</lastmod>
+        <loc>http://Powernap.github.io/blog/2014/07/16/use-github-for-scientific-writing/</loc>
+        <lastmod>2015-04-01T14:17:23+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://paulklemm.github.io/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/
+            http://Powernap.github.io/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/
         </loc>
-        <lastmod>2015-06-24T14:12:12+02:00</lastmod>
+        <lastmod>2015-02-20T16:18:26+01:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/404.html</loc>
-        <lastmod>2015-06-24T14:12:12+02:00</lastmod>
+        <loc>http://Powernap.github.io/404.html</loc>
+        <lastmod>2015-02-20T16:18:26+01:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/blog/archives/</loc>
-        <lastmod>2015-06-24T14:12:12+02:00</lastmod>
+        <loc>http://Powernap.github.io/blog/archives/</loc>
+        <lastmod>2015-04-01T14:17:23+02:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/blog/</loc>
-        <lastmod>2015-06-24T14:12:12+02:00</lastmod>
+        <loc>http://Powernap.github.io/blog/</loc>
+        <lastmod>2015-04-01T14:17:23+02:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/</loc>
-        <lastmod>2015-06-24T14:12:12+02:00</lastmod>
+        <loc>http://Powernap.github.io/</loc>
+        <lastmod>2015-04-01T14:17:23+02:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/robots.txt</loc>
-        <lastmod>2015-06-24T14:12:12+02:00</lastmod>
+        <loc>http://Powernap.github.io/robots.txt</loc>
+        <lastmod>2015-02-20T16:18:26+01:00</lastmod>
     </url>
 </urlset>
