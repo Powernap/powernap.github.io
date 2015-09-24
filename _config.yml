@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://Powernap.github.io
+url: http://paulklemm.com/zenf
 title: Zenf
 subtitle: Paul puts in his two cents
 author: Paul Klemm
@@ -26,7 +26,7 @@ email:
 # ----------------------- #
 
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
-root: /
+root: /zenf
 permalink: /blog/:year/:month/:day/:title/
 source: source
 destination: public
@@ -69,7 +69,7 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: paul_klemm
 twitter_tweet_button: true
 
 # Google +1
