@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: R | Zenf]]></title>
+  <link href="http://paulklemm.github.io/zenf/blog/categories/r/atom.xml" rel="self"/>
+  <link href="http://paulklemm.github.io/zenf/"/>
+  <updated>2015-09-24T18:50:39+02:00</updated>
+  <id>http://paulklemm.github.io/zenf/</id>
+  <author>
+    <name><![CDATA[Paul Klemm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Run rJava with RStudio under OSX 10.10]]></title>
+    <link href="http://paulklemm.github.io/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/"/>
+    <updated>2015-02-20T14:30:10+01:00</updated>
+    <id>http://paulklemm.github.io/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10</id>
+    <content type="html"><![CDATA[<h1>The Problem</h1>
+
+<p>I&rsquo;ve had some trouble getting rJava to run with RStudio. My current solution is a small workaround based on <a href="https://support.rstudio.com/hc/communities/public/questions/203781666-rJava-not-loading-in-RStudio-Mac-OS-X-10-10-but-loading-in-terminal">this post on the RStudio support pages</a>.</p>
+
+<p>The first thing I did was installing and running <code>rJava</code> through <code>RStudio</code> and attempt to load it.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>install.packages<span class="p">(</span><span class="o">&amp;</span>lsquo<span class="p">;</span>rJava<span class="o">&amp;</span>rsquo<span class="p">;)</span><span class="o">&lt;/</span>p<span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span>h1<span class="o">&gt;</span>a bunch of output follows<span class="o">&lt;/</span>h1<span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span>h1<span class="o">&gt;&amp;</span>hellip<span class="p">;</span><span class="o">&lt;/</span>h1<span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span>h1<span class="o">&gt;</span>Now we want to load rJava<span class="p">,</span> which yields an error<span class="o">&lt;/</span>h1<span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span>p<span class="o">&gt;</span>library<span class="p">(</span>rJava<span class="p">)</span>
+</span><span class='line'>Error <span class="o">:</span> .onLoad failed <span class="kr">in</span> loadNamespace<span class="p">()</span> <span class="kr">for</span> <span class="o">&amp;</span>lsquo<span class="p">;</span>rJava<span class="o">&amp;</span>rsquo<span class="p">;,</span> details<span class="o">:</span>
+</span><span class='line'>  call<span class="o">:</span> dyn.load<span class="p">(</span>file<span class="p">,</span> DLLpath <span class="o">=</span> DLLpath<span class="p">,</span> <span class="o">&amp;</span>hellip<span class="p">;)</span>
+</span><span class='line'>  error<span class="o">:</span> unable to load shared object <span class="o">&amp;</span>lsquo<span class="p">;</span><span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>Cellar<span class="o">/</span>r<span class="o">/</span><span class="m">3.1.2</span>_<span class="m">1</span><span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">3.1</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rJava<span class="o">/</span>libs<span class="o">/</span>rJava.so<span class="o">&amp;</span>rsquo<span class="p">;</span><span class="o">:</span>
+</span><span class='line'>  dlopen<span class="p">(</span><span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>Cellar<span class="o">/</span>r<span class="o">/</span><span class="m">3.1.2</span>_<span class="m">1</span><span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">3.1</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rJava<span class="o">/</span>libs<span class="o">/</span>rJava.so<span class="p">,</span> <span class="m">6</span><span class="p">)</span><span class="o">:</span> Library not loaded<span class="o">:</span> <span class="o">@</span>rpath<span class="o">/</span>libjvm.dylib
+</span><span class='line'>  Referenced from<span class="o">:</span> <span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>Cellar<span class="o">/</span>r<span class="o">/</span><span class="m">3.1.2</span>_<span class="m">1</span><span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">3.1</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rJava<span class="o">/</span>libs<span class="o">/</span>rJava.so
+</span><span class='line'>  Reason<span class="o">:</span> image not found
+</span><span class='line'>Error<span class="o">:</span> package or namespace load failed <span class="kr">for</span> ‘rJava’
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>When I&rsquo;ve ran <code>R</code> through the Terminal and ran up <code>library(rJava)</code>, everything worked just fine. Somehow, <code>RStudio</code> is not able to properly load the java path. A small workaround helps here.</p>
+
+<h1>The Workaround</h1>
+
+<p>We will launch <code>RStudio</code> through the terminal with a custom call, which gives it the proper <code>Java</code> path!</p>
+
+<h2>Check if everything works as expected</h2>
+
+<p>At first we check a couple of things.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;&lt;code&gt;which java&lt;/code&gt; should yield something like this: &lt;code&gt;/usr/bin/java&lt;/code&gt;&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>which java
+</span><span class='line'>/usr/bin/java&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;&lt;code&gt;/usr/libexec/java_home&lt;/code&gt; should yield the current jdk home folder&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>/usr/libexec/java_home
+</span><span class='line'>/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>By the way, you can also use <a href="https://stackoverflow.com/questions/21964709/how-to-change-default-java-version"><code>/usr/libexec/java_home</code></a> to <a href="https://stackoverflow.com/questions/21964709/how-to-change-default-java-version">switch your java version</a> if you wish. You can also download the newest <code>jre</code> from the Oracle <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">here</a>.</p>
+
+<p>If the output is similar to the one above you should be fine!</p>
+
+<h2>Run <code>RStudio</code> through the Terminal using a custom command</h2>
+
+<p>Now you open <code>RStudio</code> through the terminal using the following command, which sets the <code>LD_LIBRARY_PATH</code> by hard. <em>Make sure you quit all running instances of <code>RStudio</code> before you do that!</em></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ LD_LIBRARY_PATH</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>/jre/lib/server: open -a RStudio
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><code>RStudio</code> launches. Loading <code>library(rJava)</code> should work just fine! <em>If you want to use <code>rJava</code> with <code>RStudio</code>, you have to run it using this command (until they hopefully fix it!)</em></p>
+
+<h2>Make an Alias for the new Command with your Shell</h2>
+
+<p>If you want you can register a alias with your shell. Using <code>bash</code>, I&rsquo;ve opened my bash profile under <code>~/.bash_profile</code> and added the following alias:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">rstudio</span><span class="o">=</span>&amp;lsquo;LD_LIBRARY_PATH<span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>/jre/lib/server: open -a RStudio&amp;rsquo;
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h1>Thats it</h1>
+
+<p>I hope this gets fixed soon. Until then, hopefully my workaround works for you guys! See you :).</p>
+]]></content>
+  </entry>
+  
+</feed>

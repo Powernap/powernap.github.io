@@ -1,0 +1,1242 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Zenf</title>
+  <meta name="author" content="Paul Klemm">
+
+  
+  <meta name="description" content="The Problem I&rsquo;ve had some trouble getting rJava to run with RStudio. My current solution is a small workaround based on this post on the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://paulklemm.github.io/zenf/blog">
+  <link href="/zenf/favicon.png" rel="icon">
+  <link href="/zenf/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Zenf" type="application/atom+xml">
+  <script src="/zenf/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/zenf/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/zenf/">Zenf</a></h1>
+  
+    <h2>Paul puts in his two cents</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:paulklemm.github.io/zenf" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/zenf/">Blog</a></li>
+  <li><a href="/zenf/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      
+
+
+    <article class="post">
+  <header>
+    
+      <h1 class="entry-title"><a href="/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/">Run rJava With RStudio Under OSX 10.10</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-20T14:30:10+01:00" pubdate data-updated="true">Feb 20<span>th</span>, 2015</time>
+        
+         | <a href="/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>The Problem</h1>
+
+<p>I&rsquo;ve had some trouble getting rJava to run with RStudio. My current solution is a small workaround based on <a href="https://support.rstudio.com/hc/communities/public/questions/203781666-rJava-not-loading-in-RStudio-Mac-OS-X-10-10-but-loading-in-terminal">this post on the RStudio support pages</a>.</p>
+
+<p>The first thing I did was installing and running <code>rJava</code> through <code>RStudio</code> and attempt to load it.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>install.packages<span class="p">(</span><span class="s">&#39;rJava&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># a bunch of output follows</span>
+</span><span class='line'><span class="c1"># ...</span>
+</span><span class='line'><span class="c1"># Now we want to load rJava, which yields an error</span>
+</span><span class='line'>library<span class="p">(</span>rJava<span class="p">)</span>
+</span><span class='line'>Error <span class="o">:</span> .onLoad failed <span class="kr">in</span> loadNamespace<span class="p">()</span> <span class="kr">for</span> <span class="s">&#39;rJava&#39;</span><span class="p">,</span> details<span class="o">:</span>
+</span><span class='line'>  call<span class="o">:</span> dyn.load<span class="p">(</span>file<span class="p">,</span> DLLpath <span class="o">=</span> DLLpath<span class="p">,</span> <span class="kc">...</span><span class="p">)</span>
+</span><span class='line'>  error<span class="o">:</span> unable to load shared object <span class="s">&#39;/usr/local/Cellar/r/3.1.2_1/R.framework/Versions/3.1/Resources/library/rJava/libs/rJava.so&#39;</span><span class="o">:</span>
+</span><span class='line'>  dlopen<span class="p">(</span><span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>Cellar<span class="o">/</span>r<span class="o">/</span><span class="m">3.1.2</span>_<span class="m">1</span><span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">3.1</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rJava<span class="o">/</span>libs<span class="o">/</span>rJava.so<span class="p">,</span> <span class="m">6</span><span class="p">)</span><span class="o">:</span> Library not loaded<span class="o">:</span> <span class="o">@</span>rpath<span class="o">/</span>libjvm.dylib
+</span><span class='line'>  Referenced from<span class="o">:</span> <span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>Cellar<span class="o">/</span>r<span class="o">/</span><span class="m">3.1.2</span>_<span class="m">1</span><span class="o">/</span>R.framework<span class="o">/</span>Versions<span class="o">/</span><span class="m">3.1</span><span class="o">/</span>Resources<span class="o">/</span>library<span class="o">/</span>rJava<span class="o">/</span>libs<span class="o">/</span>rJava.so
+</span><span class='line'>  Reason<span class="o">:</span> image not found
+</span><span class='line'>Error<span class="o">:</span> package or namespace load failed <span class="kr">for</span> ‘rJava’
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>When I&rsquo;ve ran <code>R</code> through the Terminal and ran up <code>library(rJava)</code>, everything worked just fine. Somehow, <code>RStudio</code> is not able to properly load the java path. A small workaround helps here.</p>
+
+<h1>The Workaround</h1>
+
+<p>We will launch <code>RStudio</code> through the terminal with a custom call, which gives it the proper <code>Java</code> path!</p>
+
+<h2>Check if everything works as expected</h2>
+
+<p>At first we check a couple of things.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># `which java` should yield something like this: `/usr/bin/java`</span>
+</span><span class='line'><span class="nv">$ </span>which java
+</span><span class='line'>/usr/bin/java
+</span><span class='line'><span class="c"># `/usr/libexec/java_home` should yield the current jdk home folder</span>
+</span><span class='line'><span class="nv">$ </span>/usr/libexec/java_home
+</span><span class='line'>/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>By the way, you can also use <a href="https://stackoverflow.com/questions/21964709/how-to-change-default-java-version"><code>/usr/libexec/java_home</code></a> to <a href="https://stackoverflow.com/questions/21964709/how-to-change-default-java-version">switch your java version</a> if you wish. You can also download the newest <code>jre</code> from the Oracle <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">here</a>.</p>
+
+<p>If the output is similar to the one above you should be fine!</p>
+
+<h2>Run <code>RStudio</code> through the Terminal using a custom command</h2>
+
+<p>Now you open <code>RStudio</code> through the terminal using the following command, which sets the <code>LD_LIBRARY_PATH</code> by hard. <em>Make sure you quit all running instances of <code>RStudio</code> before you do that!</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ LD_LIBRARY_PATH</span><span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>/jre/lib/server: open -a RStudio
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>RStudio</code> launches. Loading <code>library(rJava)</code> should work just fine! <em>If you want to use <code>rJava</code> with <code>RStudio</code>, you have to run it using this command (until they hopefully fix it!)</em></p>
+
+<h2>Make an Alias for the new Command with your Shell</h2>
+
+<p>If you want you can register a alias with your shell. Using <code>bash</code>, I&rsquo;ve opened my bash profile under <code>~/.bash_profile</code> and added the following alias:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">rstudio</span><span class="o">=</span><span class="s1">&#39;LD_LIBRARY_PATH=$(/usr/libexec/java_home)/jre/lib/server: open -a RStudio&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Thats it</h1>
+
+<p>I hope this gets fixed soon. Until then, hopefully my workaround works for you guys! See you :).</p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <h1 class="entry-title"><a href="/zenf/blog/2014/07/16/use-github-for-scientific-writing/">Use Github for Scientific Writing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-16T16:36:35+02:00" pubdate data-updated="true">Jul 16<span>th</span>, 2014</time>
+        
+         | <a href="/zenf/blog/2014/07/16/use-github-for-scientific-writing/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>tl;dr:</strong> <em><code>GIT</code> is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools supporting collaborative work makes <code>github</code> a good place for storing all information there.</em></p>
+
+<hr />
+
+<br>
+
+
+<p><img class="right" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/gitlab.png" width="200">
+There are many reasons why I adore <code>github</code>! For me, it stands for all the good things associated with open content &mdash; the beautiful mindset behind it where many people participate to create amazing things! Openness, which is still largely missing in scientific research.</p>
+
+<p>Collaborative work on a scientific paper is carried out in the worst case by emailing <code>LaTeX</code> code. I don&rsquo;t think I have to talk about the disadvantages of this approach. Tools like <a href="www.dropbox.com">Dropbox</a> allow to share folders with different users, but also have major disadvantages. They share everything in a folder, regardless of source files or auxiliary files created during the typesetting process. Many <code>LaTeX</code> editors store configuration files in the project folders and are therefore synced as well. And the constant dropbox pop-up informing me that someone currently works on a text is maddening.</p>
+
+<p><code>GIT</code> was designed for code-projects, but also works very well for the scientific writing process. If you are new to <code>GIT</code>, check out this great interactive tutorial, teaching you everything you need to know in about 15 minutes at <a href="https://try.github.io">try.github.io</a>.</p>
+
+<p>To clarify: <code>GIT</code> is the name of the <em>versioning system</em>, <code>github</code> is a web site for storing <code>GIT</code>-repositories and it comes with additional features. The major advantages of <code>GIT</code>/<code>github</code> include:</p>
+
+<ul>
+<li>ignoring auxiliary files created by <code>TeX</code> during the typesetting process or configuration files from the <code>LaTeX</code> editor,</li>
+<li>track changes using commit messages, creating DIFFs and using branches,</li>
+<li>discuss ideas using the build in <code>Wiki</code> and <code>bug tracking</code>/<code>milestone</code> system,</li>
+<li>modern Git-Clients, which make it easy to use for people too shy to use the command line (which is by far not as scary as you might assume).</li>
+</ul>
+
+
+<p><code>Github</code> repositories are by default open for everyone to see. If you don&rsquo;t want that, you have to create a private repository.
+<code>Github</code> offers <em>five free private repositories</em> for students or University associates (<a href="https://education.github.com/">https://education.github.com/</a>).</p>
+
+<p>In this blog post I show how to set up a git repository for a scientific paper, recommend a structure and give examples on how you can use features of <code>GIT</code> and <code>github</code> to boost your productivity! Note that I will demonstrate the use of <code>GIT</code> through the console. You can also use the github app (<a href="https://mac.github.com/">Mac</a>, <a href="https://windows.github.com/">Windows</a>) or any other <code>GIT</code> client for this.</p>
+
+<h2>Setup</h2>
+
+<h3>Creating the New Repository</h3>
+
+<p><img class="right" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/createNewRepo.png" width="300"></p>
+
+<p>Creating a new repository at Github is easy as pie. When you are logged in, you can use the toolbar at the top right corner to create a new repository.</p>
+
+<p><img class="center" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/init.png"></p>
+
+<p>In the next window you can create your new repository. Give it a meaningful title and make sure to select the <code>TeX</code> <code>.gitignore</code> template at the bottom. If you want to create a <em>private repository</em>, you can request it using this link: <a href="https://education.github.com/">https://education.github.com/</a>. The people at Github are pretty fast, it took them only a few hours to verify my account.</p>
+
+<p>After you&rsquo;ve created the repository it should look similar to this:
+<img class="center" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/init-2.png"></p>
+
+<h3>Add your Files to the Repository</h3>
+
+<p>Chances are that you already wrote some stuff or have unpacked the authors packages of the conference or journal. <code>Git</code> makes it easy to add these files to the existing repository. At first, lets clone the newly created repository. You find the <code>http</code> address to your repository on the right bottom of its <code>github</code> page under <em>HTTPS clone URL</em>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ~/Desktop
+</span><span class='line'><span class="nv">$ </span>git clone https://github.com/Powernap/My-Awesome-Paper.git
+</span><span class='line'>    Cloning into <span class="s1">&#39;My-Awesome-Paper&#39;</span>...
+</span><span class='line'>    remote: Counting objects: 4, <span class="k">done</span>.
+</span><span class='line'>    remote: Compressing objects: 100% <span class="o">(</span>3/3<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>    remote: Total 4 <span class="o">(</span>delta 0<span class="o">)</span>, reused 0 <span class="o">(</span>delta 0<span class="o">)</span>
+</span><span class='line'>    Unpacking objects: 100% <span class="o">(</span>4/4<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>    Checking connectivity... <span class="k">done</span>.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you should have the repository on your desktop. You can add all existing files to the folder via drag and drop. Here are the commands you potentially need to add the new files to the repository:</p>
+
+<ul>
+<li><code>git status</code> is a useful command for checking the current status of a repository is . It also should ignore the files specified in the <code>.gitignore</code> file.</li>
+<li><code>git add &lt;someFile&gt;</code> adds files to a repository</li>
+<li><code>git add -A</code> adds all files and folders listed under <em>untracked files</em></li>
+<li><code>git commit</code> makes a commit to a repository. Note that these commits are still only part of your local copy of the repository &mdash; unlike other versioning systems, such as <code>SVN</code>, you can create commits while being offline.</li>
+<li><code>git push</code> uploads all changes to the repository stored at github.</li>
+</ul>
+
+
+<p>Here is an example for doing this:</p>
+
+<p><img class="right" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/folder.png" width="200"></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># You can use any folder you want!</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ~/Desktop/My-Awesome-Paper
+</span><span class='line'><span class="nv">$ </span>git status
+</span><span class='line'>    On branch master
+</span><span class='line'>    Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
+</span><span class='line'>
+</span><span class='line'>    Untracked files:
+</span><span class='line'>      <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>        Example.tex
+</span><span class='line'>        SCITEPRESS.eps
+</span><span class='line'>        SCITEPRESS.sty
+</span><span class='line'>        apalike.bst
+</span><span class='line'>        apalike.sty
+</span><span class='line'>        article.cls
+</span><span class='line'>        example.bib
+</span><span class='line'>
+</span><span class='line'>    nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> to track<span class="o">)</span>
+</span><span class='line'><span class="c"># Now add all files under `Untracked files`</span>
+</span><span class='line'><span class="nv">$ </span>git add -A
+</span><span class='line'><span class="c"># &#39;-m&#39; directly adds the commit message</span>
+</span><span class='line'><span class="nv">$ </span>git commit -m <span class="s2">&quot;Added conference style files&quot;</span>
+</span><span class='line'>    <span class="o">[</span>master f01710d<span class="o">]</span> Added conference style files
+</span><span class='line'>     7 files changed, 2318 insertions<span class="o">(</span>+<span class="o">)</span>
+</span><span class='line'>    create mode 100755 Example.tex
+</span><span class='line'>    create mode 100755 SCITEPRESS.eps
+</span><span class='line'>    create mode 100755 SCITEPRESS.sty
+</span><span class='line'>    create mode 100755 apalike.bst
+</span><span class='line'>    create mode 100755 apalike.sty
+</span><span class='line'>    create mode 100755 article.cls
+</span><span class='line'>    create mode 100755 example.bib
+</span><span class='line'><span class="c"># Now everything is at the &#39;head&#39; of your local copy of the repository.</span>
+</span><span class='line'><span class="c"># Time to push it to the github server!</span>
+</span><span class='line'><span class="nv">$ </span>git push
+</span><span class='line'>    Counting objects: 10, <span class="k">done</span>.
+</span><span class='line'>    Delta compression using up to 8 threads.
+</span><span class='line'>    Compressing objects: 100% <span class="o">(</span>9/9<span class="o">)</span>, <span class="k">done</span>.
+</span><span class='line'>    Writing objects: 100% <span class="o">(</span>9/9<span class="o">)</span>, 382.59 KiB | 0 bytes/s, <span class="k">done</span>.
+</span><span class='line'>    Total 9 <span class="o">(</span>delta 0<span class="o">)</span>, reused 0 <span class="o">(</span>delta 0<span class="o">)</span>
+</span><span class='line'>    To https://github.com/Powernap/My-Awesome-Paper.git
+</span><span class='line'>       0e07357..f01710d  master -&gt; master
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you find it hard to follow, you should look <a href="https://try.github.io">into this quick tutorial</a>.</p>
+
+<h3>The <code>.gitignore</code> File</h3>
+
+<p>It is a good habit to add a <code>.gitignore</code> file to your repository, which contains a list of files ignored by <code>git</code>. <code>LaTeX</code> produces many auxiliary files during its typesetting process, which differ depending on the OS you use and the installed <code>TeX</code> version. It is a good idea to exclude them, especially when collaborating with other people on a paper. Adding files is straightforward, add file names and separate them using newlines. You can even use wildcards using the <code>*</code> symbol, or exclude entire folders (e.g. <code>output/</code>). Whether to add <code>PDF</code>-files to the repository is a matter of taste. I always commit the current state of my work as pdf because it makes it easy to look at versions of previous commits.</p>
+
+<h2>Use the Power of <code>GIT</code> and <code>github</code></h2>
+
+<p>Once set up, the full power of <code>git</code> and <code>github</code> lies beneath your fingertips.</p>
+
+<h3>Commit often!</h3>
+
+<p>When working with versioning systems, it is recommended to <a href="http://www.databasically.com/2011/03/14/git-commit-early-commit-often/">commit early and often</a>! Changes to the text are by far more comprehensible and it avoids conflicts when working with multiple people on a text!</p>
+
+<p>Updating the repository is straightforward, just run <code>git add &lt;your File&gt;</code>, create a <code>git commit</code> and <code>git push</code> it to the server. If you just want to update all files in the repository, you can use <code>git commit -a</code> instead of tediously <code>git add</code>&lsquo;ing all changed files.</p>
+
+<p>All commits can be viewed at your projects <code>github</code> page.
+<img class="center" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/commits.png">
+Here you can see the changes made to the repository in every commit. Each line can also be commented to trigger a discussion or give feedback! These views are called <em>DIFFs</em>.
+<img class="center" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/diff.png" width="350"></p>
+
+<h3>Structure your <code>LaTeX</code> Documents</h3>
+
+<p>It is often a good idea to divide your chapters or sections into individual files and include them in a master file via the <code>\input</code> command. A barebone <code>TeX</code> file could look like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>article<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'><span class="k">\input</span><span class="nb">{</span>Chapter-1.tex<span class="nb">}</span>
+</span><span class='line'><span class="k">\input</span><span class="nb">{</span>Chapter-2.tex<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Besides keeping the project structured, it reduces the number of conflicts when you also work with co-authors. I also found it useful to separate each sentence in the following way:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\section</span><span class="nb">{</span>Proof of Everything<span class="nb">}</span>
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'><span class="k">\noindent</span> This is my introduction to this chapter.
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'>I divide every sentence with a comment.
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'>This way it is easy to identify huge sentences that are hard to read and to understand and everybody knows how hard these sentences are to find in the text when you have a lot of text and well you know what I mean.
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'>Sentences can also be easily commented out this way.
+</span><span class='line'><span class="c">%%</span>
+</span><span class='line'>Changes made to Tex files structured like this are well readable using the github diff view.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Use the Social Features!</h3>
+
+<p><img class="right" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/discussion.png" width="400">
+Having all authors of a scientific paper in one place is rare. Exchange of ideas and feedback via email is tedious. The build in <a href="https://help.github.com/articles/about-github-wikis"><code>Wiki</code></a> for each repository is a great way for collecting and summarizing ideas. Even in public repositories you can restrict access to the wiki to collaborators only if you want to keep it more private.</p>
+
+<p>The <code>issue</code> and <code>milestone</code> system is packed with useful features for discussing the current process of the work. Discussions can even be referenced to commits. All information is kept at one place, communication is synchronized and you don&rsquo;t need to look up old mails with chunks of information any more!</p>
+
+<h3>Use Branches</h3>
+
+<p>Say you want to write a new section, but it will take a couple of days. At the same time, you do not want to change the repository all the time, forcing your co-authors to <code>git pull</code> every time they also want to edit the paper. <code>GIT</code> was designed with such cases in mind! You can simply create your own sub-repository, called a <code>branch</code>, edit it and merge it together with the master-branch.</p>
+
+<p><img class="right" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/branch.png" width="200"></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># Create new &#39;my-section&#39; branch</span>
+</span><span class='line'><span class="nv">$ </span>git branch my-section
+</span><span class='line'><span class="c"># List all branches</span>
+</span><span class='line'><span class="nv">$ </span>git branch
+</span><span class='line'>  * master
+</span><span class='line'>    my-section
+</span><span class='line'><span class="c"># Switch to &#39;my-section&#39; branch</span>
+</span><span class='line'><span class="nv">$ </span>git checkout my-section
+</span><span class='line'>  Switched to branch <span class="s1">&#39;my-section&#39;</span>
+</span><span class='line'><span class="c"># Make changes and upload them (-a adds all locally changed files to the repo)</span>
+</span><span class='line'><span class="nv">$ </span>git add my-section.tex
+</span><span class='line'><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;added my new section&quot;</span>
+</span><span class='line'>  <span class="o">[</span>my-section fce493f<span class="o">]</span> added my new section
+</span><span class='line'>   2 files changed, 9 insertions<span class="o">(</span>+<span class="o">)</span>
+</span><span class='line'>   create mode 100644 my-section.tex
+</span><span class='line'><span class="c"># Switch back to the Master branch and merge the sections</span>
+</span><span class='line'><span class="nv">$ </span>git checkout master
+</span><span class='line'>  Switched to branch <span class="s1">&#39;master&#39;</span>
+</span><span class='line'>  Your branch is up-to-date with <span class="s1">&#39;origin/master&#39;</span>.
+</span><span class='line'><span class="nv">$ </span>git merge my-section
+</span><span class='line'>  Updating f01710d..fce493f
+</span><span class='line'>  Fast-forward
+</span><span class='line'>   Example.tex    | 1 +
+</span><span class='line'>   my-section.tex | 8 ++++++++
+</span><span class='line'>   2 files changed, 9 insertions<span class="o">(</span>+<span class="o">)</span>
+</span><span class='line'>   create mode 100644 my-section.tex
+</span><span class='line'><span class="nv">$ </span>git push
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Create Releases</h3>
+
+<p><img class="right" src="/zenf/media/2014-07-16-use-github-for-scientific-writing/releases.png" width="350">
+<code>Releases</code> are a great feature to freeze commits. I use it to save important milestones, such as the blind submission for reviewing.</p>
+
+<h3>Use All the Features!</h3>
+
+<p>Just kidding. But <code>github</code> offers a ton of other features I did not cover in this post. To get an impression about <code>githubs</code> power, head over to its <a href="https://github.com/features">feature page</a>.</p>
+
+<p>They even work on their own editor <a href="https://atom.io">Atom</a>, which <a href="http://discuss.atom.io/t/latex-language-support/541">supports LaTeX</a> but isn&rsquo;t as functional as the packages in <a href="https://github.com/textmate/textmate">Textmate</a> or <a href="http://www.sublimetext.com/">Sublime Text</a>.</p>
+
+<h2>Closing Remarks</h2>
+
+<p>There is no <em>right</em> way to write. All these examples are based on my own experience, my own way to work and what I found enough to share it with you. Surely there are much more different ways to use <code>GIT</code> and <code>github</code> for writing. Also, there are great cloud-based LaTeX editors, which also allow collaborative editing (e.g. <a href="https://www.sharelatex.com/">ShareLaTeX</a>). Please feel free to make remarks in the comment section!</p>
+
+<p>Since I feel that openness plays a crucial role in scientific research, we do good in using these systems and break out of our isolated bubbles and have open discussions about our work and how it develops. Tools like <code>github</code> allow us to do so!</p>
+
+<h2>Encore</h2>
+
+<p>This is what reviewing revisions can look like if your co-authors use this workflow. I find this pretty awesome &lt;3.
+<img src="/zenf/media/2014-07-16-use-github-for-scientific-writing/comparison.gif"></p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <h1 class="entry-title"><a href="/zenf/blog/2013/12/07/watch-twitch-using-vlc-in-osx/">Watch Twitch Using VLC in OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-07T00:20:42+01:00" pubdate data-updated="true">Dec 7<span>th</span>, 2013</time>
+        
+         | <a href="/zenf/blog/2013/12/07/watch-twitch-using-vlc-in-osx/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you own a Retina-Macbook you problably struggle with fairly high CPU load and bad performance when watching Twitch-channels using the standard flash-based player in the browser.</p>
+
+<p>A tool called <code>livestreamer</code> can be used to bring Twitch streams to the beloved VLC player (which also uses the GPU to process videos). This way you are not just able to reduce the used resources, the streams also feel much smoother, especially for high resolutions.</p>
+
+<p><em>Twitch will not be able to stream ads if you use this solution.</em>
+<em>Please be fair and subscribe to channels you like and you support.</em></p>
+
+<p><strong>[Update 2014-02-20]</strong></p>
+
+<p>If you are using the glorious <a href="http://www.alfredapp.com">Alfred App</a> you might be interested in this workflow, which allows for the same thing: <a href="http://www.packal.org/workflow/twitchstreamer">http://www.packal.org/workflow/twitchstreamer</a>.</p>
+
+<p><strong>[Update 2014-03-06]</strong></p>
+
+<p>Added updating instructions.</p>
+
+<h2>Install Livestreamer</h2>
+
+<ul>
+<li>Download and install <code>rtmpdump</code> from <a href="http://trick77.com/wp-content/uploads/2008/01/rtmpdump-2.4_mac_os.zip">here</a></li>
+<li>Download <code>python-setuptools</code> from <a href="https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea">here</a></li>
+<li>Open <code>Terminal.app</code></li>
+<li>Navigate to the folder where you downloaded the Egg-File and install it</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Downloads
+</span><span class='line'>sh setuptools-0.6c11-py2.7.egg
+</span><span class='line'><span class="c"># Maybe you need to run it as sudo - `sudo sh setuptools-0.6c11-py2.7.egg`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Clone <code>Livestreamer</code> GIT Repository and install <code>Livestreamer</code></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone git://github.com/chrippa/livestreamer.git
+</span><span class='line'><span class="nb">cd </span>livestreamer
+</span><span class='line'>python setup.py install
+</span><span class='line'><span class="c"># Again, maybe you need to run it as sudo - `sudo python setup.py install`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you should be able to view Twitch channels in VLC</p>
+
+<h2>Using Livestreamer</h2>
+
+<p>Say you want to view this Twitch channel in VLC: <a href="http://www.twitch.tv/wcs_europe">http://www.twitch.tv/wcs_europe</a>.
+All you have to to is go into the <code>Terminal.app</code> and type</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>livestreamer http://www.twitch.tv/wcs_europe <span class="o">[</span>quality<span class="o">]</span>
+</span><span class='line'><span class="c"># You might as well skip the `http://www.` part</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here, <code>[quality]</code> has to be a quality setting from the stream, usually ranging between <code>low</code>, <code>medium</code>, <code>high</code> and <code>source</code>. If you leave it empty, <code>livestreamer</code> will tell you, which options you can choose from. Setting the parameter to <code>best</code> tells <code>livestreamer</code> to use the highest quality available.</p>
+
+<p>Et voilá. Enjoy your stream.
+<img class="center" src="/zenf/media/2013-12-07-watch-twitch-using-vlc-in-osx/twitch-vlc-sc2_small.png"></p>
+
+<h2>Update Livestreamer</h2>
+
+<p>If you see a message like this when launching <code>livestreamer</code> you might update to the latest version:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="o">[</span>cli<span class="o">][</span>info<span class="o">]</span> A new version of Livestreamer <span class="o">(</span>1.7.4<span class="o">)</span> is available!
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To do so, navigate to any folder, for example <code>~/Downloads</code>, and run the following commands:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> ~/Downloads
+</span><span class='line'>git clone git://github.com/chrippa/livestreamer.git
+</span><span class='line'><span class="nb">cd </span>livestreamer
+</span><span class='line'>python setup.py install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After that you can remove the livestreamer folder from the folder you cloned the GIT repository to (<code>~/Downloads/livestreamer</code> in our example).</p>
+
+<h1>References</h1>
+
+<ul>
+<li>Links and instructions how to install everything is taken from different Posts in this <a href="http://forum.gamesports.net/dota/showthread.php?45027-How-to-watch-Twitch-TV-in-VLC-player-(MAC-OSX-HOW-TO">Gamespot Thread</a></li>
+<li>For further information, visit <a href="http://livestreamer.tanuki.se/en/latest/">this site from the livestreamer developer</a>, which offers more detailed instructions</li>
+</ul>
+
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <h1 class="entry-title"><a href="/zenf/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/">Install Python With VTK and Qt Support for Use With Eclipse in OS X Mountain Lion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-20T10:04:00+02:00" pubdate data-updated="true">Aug 20<span>th</span>, 2012</time>
+        
+         | <a href="/zenf/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In this post I&rsquo;d like to show you how to install <code>Python</code> with support for <code>VTK</code> and <code>Qt</code> using Apple OS X 10.8 Mountain Lion. Then I set up <code>Eclipse</code> with the new <code>Python</code> installation in order to use all of it&rsquo;s auto-completion and debugging capabilities. Please leave a comment with your experiences using this.</p>
+
+<p>The instructions for the installation of <code>Python</code> and <code>Qt</code> consists mostly of information from these two posts <a href="http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/">[1]</a> <a href="http://jbowles.github.com/blog/2012/04/22/python/">[2]</a>, so please credit these guys for this, not me.</p>
+
+<p>If you run a Windows or Linux machine and you might want to do yourself a favor and use the <a href="http://graphics.tudelft.nl/Projects/DeVIDE">DRE which is included in DeVIDE</a>.</p>
+
+<h2>Install and configure Homebrew</h2>
+
+<p>As a very first step you need to install <em>Homebrew</em>, the friendly packet manager for Mac OS X <a href="http://mxcl.github.com/homebrew/">[3]</a>. This makes it really easy to install all the necessary stuff. While OS X already ships with versions of <code>Python</code>, <code>Ruby</code> and other stuff, the versions they provide are often deprecated and installing own packages can be quite frustrating. Homebrew installs all it&rsquo;s stuff isolated from the system under <code>/usr/local/cellar</code>. This way you can install your own libraries without touching the components installed from Apple.</p>
+
+<p>In order make sure that Terminal searches the <code>bin</code> folder of Homebrew first before the System <code>bin</code> folder (which is <code>/usr/bin</code>), you need to add it to the <code>PATH</code>-variable. This can be done by editing the <code>.bash_profile</code> file in you user root folder <code>/Users/&lt;your username&gt;/.bash_profile</code> (further referenced as <code>~/</code>). If this file doesn&rsquo;t exist, create it! Now you add</p>
+
+<figure class='code'><figcaption><span>~/.bash_profile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/bin:<span class="nv">$PATH</span>
+</span><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/share/python:<span class="nv">$PATH</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>to the file. The second entry is later used to get the right version of <code>PIP</code>.
+Note: If you have a Terminal session up and running you need to restart it in order to apply the changes to the <code>PATH</code>. If you have trouble with hidden files on the system, <a href="http://totalfinder.binaryage.com/">this Tool</a> can come in handy for you!</p>
+
+<p>Before you install anything to Homebrew, be sure to run <code>brew doctor</code> and <code>brew update</code> to check if all dependencies are installed (<code>xCode</code>, <code>Command Line Tools</code> and <code>x11</code>). When <code>brew doctor</code> gives you green light you are good to go!</p>
+
+<h2>Install Python</h2>
+
+<p>The very first step is that you install your own version of <code>Python</code> by running the following command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install python --framework --universal
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In order to make it the default <code>Python</code> installation of the system you need to execute</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /System/Library/Frameworks/Python.framework/Versions
+</span><span class='line'>sudo rm Current
+</span><span class='line'>ln -s /usr/local/Cellar/python/2.7.2/Frameworks/Python.framework/Versions/Current
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This changes the symlink to our new <code>Python</code> installation. You will be promted for you password since this is an action which requires admin rights.</p>
+
+<p>If everything worked, <code>which python</code> should return <code>/usr/local/bin/python</code>.</p>
+
+<p>Next step is the installation of <code>PIP</code> using the command</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>easy_install pip
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now <code>which pip</code> should return <code>/usr/local/share/python/pip</code> &ndash; otherwise the <code>PATH</code> is not properly set as described above.</p>
+
+<p>Now you can install other Packages like <code>Numpy</code> or <code>Scipy</code> &ndash; depending on what you need. Note: If you want to install <code>Scipy</code> you need to install the <code>gfortran</code> compiler.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install numpy
+</span><span class='line'>brew install gfortran
+</span><span class='line'>pip install scipy
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Note: To date of this post, you have to use the developer version of <code>Scipy</code> to make it work under Mountain Lion. This can be done using</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install -e git+https://github.com/scipy/scipy#egg<span class="o">=</span>scipy-dev
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will create a folder <code>~/src</code> and install <code>Scipy</code> from there.</p>
+
+<h2>Install Qt</h2>
+
+<p>To install <code>Qt</code> and <code>Pyqt</code>-bindings you execute</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install qt
+</span><span class='line'>brew install pyqt
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Install VTK</h2>
+
+<p>To install VTK you need to run</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install vtk --tcl --qt --python --pyqt --examples
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This took about 60 minutes on my early 2008 Macbook Pro, so take your time for a well-earned rest ;).</p>
+
+<p>When this is done you should be able to <code>import vtk</code> into your <code>Python</code> environment without any errors.</p>
+
+<h2>Setup Python for use with Eclipse</h2>
+
+<p>This part is oriented on the introduction on how to include the <code>DRE</code> into <code>Eclipse</code>, which can be found under <a href="http://code.google.com/p/devide/wiki/EclipseDRE">[4]</a> and in the following screencast. I just made a few enhancements to make it work for this application. Note that the steps of the screencast don&rsquo;t work exactly on our installation!<iframe width="420" height="315" src="https://www.youtube.com/embed/-b1zS536R2M" frameborder="0" allowfullscreen></iframe></p>
+
+<p>To use <code>Python</code> together with <code>Eclipse</code> you have to install the <em>Classic</em> Version from <a href="http://www.eclipse.org/downloads/">the official homepage</a>. Next, <a href="http://pydev.org/manual_101_install.html">install PyDev into Eclipse</a>. Now you need to tell <code>Eclipse</code> which <code>Python</code> installation it should use. This can be done in <code>Eclipse → Settings → Pydev → Interpreter-Python → New</code>. In the next Dialog you have to add Path to the Homebrew <code>Python</code>.
+<img class="center" src="/zenf/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonInterpreter.png">
+Confirm the next Prompt which should look like the following screenshot and you are done.
+<img class="center" src="/zenf/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonPackages.png"></p>
+
+<p>Now you are good to go. Create a new PyDev Project, select the new created interpreter and play around with <code>VTK</code> &ndash; it all should be working with auto completion and the other neat <code>Eclipse</code> features. The Code example Charl used in the Screencast should compile:</p>
+
+<figure class='code'><figcaption><span>vtkDonutTest.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">vtk</span>
+</span><span class='line'><span class="c"># create a donut polydata source</span>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkSuperquadricSource</span><span class="p">()</span>
+</span><span class='line'><span class="n">s</span><span class="o">.</span><span class="n">ToroidalOn</span><span class="p">()</span>
+</span><span class='line'><span class="c"># connect it to a polydatamapper</span>
+</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkPolyDataMapper</span><span class="p">()</span>
+</span><span class='line'><span class="n">m</span><span class="o">.</span><span class="n">SetInput</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">())</span>
+</span><span class='line'><span class="c"># and finally create an actor to represent the donut in the scene</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkActor</span><span class="p">()</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">SetMapper</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># the renderer is the 3D scene</span>
+</span><span class='line'><span class="n">ren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderer</span><span class="p">()</span>
+</span><span class='line'><span class="n">ren</span><span class="o">.</span><span class="n">AddActor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'><span class="c"># renderwindow to contain the 3D scene</span>
+</span><span class='line'><span class="n">rw</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindow</span><span class="p">()</span>
+</span><span class='line'><span class="n">rw</span><span class="o">.</span><span class="n">AddRenderer</span><span class="p">(</span><span class="n">ren</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># we want the user to interact</span>
+</span><span class='line'><span class="n">iren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindowInteractor</span><span class="p">()</span>
+</span><span class='line'><span class="n">iren</span><span class="o">.</span><span class="n">SetRenderWindow</span><span class="p">(</span><span class="n">rw</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># get the whole business going</span>
+</span><span class='line'><span class="n">iren</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+</span><span class='line'><span class="n">rw</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span>
+</span><span class='line'><span class="n">iren</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To test the Qt-Support you can run the following code <a href="https://svn.enthought.com/svn/enthought/Mayavi/trunk/enthought/tvtk/pyface/ui/qt4/QVTKRenderWindowInteractor.py">[5]</a>:</p>
+
+<figure class='code'><figcaption><span>vtkQtTest.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">vtk</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtGui</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">vtk.qt4.QVTKRenderWindowInteractor</span> <span class="kn">import</span> <span class="n">QVTKRenderWindowInteractor</span>
+</span><span class='line'>
+</span><span class='line'><span class="sd">&quot;&quot;&quot;A simple example that uses the QVTKRenderWindowInteractor class.&quot;&quot;&quot;</span>
+</span><span class='line'><span class="c"># every QT app needs an app</span>
+</span><span class='line'><span class="n">app</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="p">([</span><span class="s">&#39;QVTKRenderWindowInteractor&#39;</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># create the widget</span>
+</span><span class='line'><span class="n">widget</span> <span class="o">=</span> <span class="n">QVTKRenderWindowInteractor</span><span class="p">()</span>
+</span><span class='line'><span class="n">widget</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+</span><span class='line'><span class="n">widget</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
+</span><span class='line'><span class="c"># if you dont want the &#39;q&#39; key to exit comment this.</span>
+</span><span class='line'><span class="n">widget</span><span class="o">.</span><span class="n">AddObserver</span><span class="p">(</span><span class="s">&quot;ExitEvent&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">o</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">app</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">quit</span><span class="p">())</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">ren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderer</span><span class="p">()</span>
+</span><span class='line'><span class="n">widget</span><span class="o">.</span><span class="n">GetRenderWindow</span><span class="p">()</span><span class="o">.</span><span class="n">AddRenderer</span><span class="p">(</span><span class="n">ren</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cone</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkConeSource</span><span class="p">()</span>
+</span><span class='line'><span class="n">cone</span><span class="o">.</span><span class="n">SetResolution</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">coneMapper</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkPolyDataMapper</span><span class="p">()</span>
+</span><span class='line'><span class="n">coneMapper</span><span class="o">.</span><span class="n">SetInput</span><span class="p">(</span><span class="n">cone</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">())</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">coneActor</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkActor</span><span class="p">()</span>
+</span><span class='line'><span class="n">coneActor</span><span class="o">.</span><span class="n">SetMapper</span><span class="p">(</span><span class="n">coneMapper</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">ren</span><span class="o">.</span><span class="n">AddActor</span><span class="p">(</span><span class="n">coneActor</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># show the widget</span>
+</span><span class='line'><span class="n">widget</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span><span class='line'><span class="c"># start event processing</span>
+</span><span class='line'><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Add VTK-Module to Qt-Designer</h2>
+
+<p>If you want to use the <code>Qt-Designer</code> for the use with <code>VTK</code>, things get a little bit tricky. The <code>Qt-Designer</code> comes with our installation of <code>Qt</code> under <code>/usr/local/Cellar/qt/4.8.2/Designer.app</code> and is a <em>WYSISWYG</em>-Editor for <code>Qt</code>-UIs. <code>VTK</code> already has installed a plugin for it, it just has to be sym-linked into the <code>Qt-Designer</code>-Path. You can do this using the following commands, but check your current versions before running these.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> /usr/local/Cellar/qt/4.8.2/plugins/designer
+</span><span class='line'>ln -s /usr/local/Cellar/vtk/5.10.0/plugins/designer/libQVTKWidgetPlugin.dylib libQVTKWidgetPlugin.dylib
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now you should have a QVTKWidget available in the <code>Qt-Designer</code>. The tricky part begins now. Unfortunately when you try to include a <code>Qt</code>-UI which contains a <code>QVTKWidget</code>, it fails to compile, because <code>QVTKWidget</code> belongs to the Class <code>QVTKWidget.QVTKWidget</code>, while the correct class is <code>vtk.QVTKWidget</code>. You can fix this using the following workaround.</p>
+
+<p>When you have created your UI using the <code>Qt-Designer</code> you can convert it to <code>Python</code>-Code using the command</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pyuic4 myTestApp.ui &gt; myTestApp_ui.py
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Import the new file into your Project and change the line</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">QVTKWidget</span> <span class="kn">import</span> <span class="n">QVTKWidget</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>to</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">vtk</span> <span class="kn">import</span> <span class="n">QVTKWidget</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now it will compile and run. The tradeoff is that you have to manually change this line every time you want to make changes to the UI using the <code>Qt-Designer</code>.
+To give an example for a converted UI file which runs, look at the following code.</p>
+
+<figure class='code'><figcaption><span>pythonQtVTKTest.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">vtk</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtGui</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">pythonQtVTKTest_ui</span> <span class="kn">import</span> <span class="n">Ui_Form_Main</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">StartQT4</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">QtGui</span><span class="o">.</span><span class="n">QWidget</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">Ui_Form_Main</span><span class="p">()</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">draw_stuff</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">draw_stuff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="c"># create a donut polydata source</span>
+</span><span class='line'>        <span class="n">s</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkSuperquadricSource</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">s</span><span class="o">.</span><span class="n">ToroidalOn</span><span class="p">()</span>
+</span><span class='line'>        <span class="c"># connect it to a polydatamapper</span>
+</span><span class='line'>        <span class="n">m</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkPolyDataMapper</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">m</span><span class="o">.</span><span class="n">SetInput</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">())</span>
+</span><span class='line'>        <span class="c"># and finally create an actor to represent the donut in the scene</span>
+</span><span class='line'>        <span class="n">a</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkActor</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">a</span><span class="o">.</span><span class="n">SetMapper</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c"># the renderer is the 3D scene</span>
+</span><span class='line'>        <span class="n">ren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderer</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">ren</span><span class="o">.</span><span class="n">AddActor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>        <span class="c"># renderwindow to contain the 3D scene</span>
+</span><span class='line'>        <span class="n">rw</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindow</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">rw</span><span class="o">.</span><span class="n">AddRenderer</span><span class="p">(</span><span class="n">ren</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">qvtkWidget</span><span class="o">.</span><span class="n">GetRenderWindow</span><span class="p">()</span><span class="o">.</span><span class="n">AddRenderer</span><span class="p">(</span><span class="n">ren</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c"># we want the user to interact</span>
+</span><span class='line'>        <span class="n">iren</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkRenderWindowInteractor</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">iren</span><span class="o">.</span><span class="n">SetRenderWindow</span><span class="p">(</span><span class="n">rw</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c"># get the whole business going</span>
+</span><span class='line'>        <span class="n">iren</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">rw</span><span class="o">.</span><span class="n">Render</span><span class="p">()</span>
+</span><span class='line'>        <span class="c">#iren.Start()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">app</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">myapp</span> <span class="o">=</span> <span class="n">StartQT4</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">myapp</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span><span class='line'>    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>pythonQtVTKTest_UI.py </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c"># -*- coding: utf-8 -*-</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Form implementation generated from reading ui file &#39;pythonQtVTKTest.ui&#39;</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># Created: Tue Aug 21 15:40:57 2012</span>
+</span><span class='line'><span class="c">#      by: PyQt4 UI code generator 4.9.4</span>
+</span><span class='line'><span class="c">#</span>
+</span><span class='line'><span class="c"># WARNING! All changes made in this file will be lost!</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">try</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">_fromUtf8</span> <span class="o">=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QString</span><span class="o">.</span><span class="n">fromUtf8</span>
+</span><span class='line'><span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">_fromUtf8</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Ui_Form_Main</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Form_Main</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">Form_Main</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="n">_fromUtf8</span><span class="p">(</span><span class="s">&quot;Form_Main&quot;</span><span class="p">))</span>
+</span><span class='line'>        <span class="n">Form_Main</span><span class="o">.</span><span class="n">setEnabled</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">Form_Main</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">623</span><span class="p">,</span> <span class="mi">462</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">qvtkWidget</span> <span class="o">=</span> <span class="n">QVTKWidget</span><span class="p">(</span><span class="n">Form_Main</span><span class="p">)</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">qvtkWidget</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QRect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">601</span><span class="p">,</span> <span class="mi">441</span><span class="p">))</span>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">qvtkWidget</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="n">_fromUtf8</span><span class="p">(</span><span class="s">&quot;qvtkWidget&quot;</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="bp">self</span><span class="o">.</span><span class="n">retranslateUi</span><span class="p">(</span><span class="n">Form_Main</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">QtCore</span><span class="o">.</span><span class="n">QMetaObject</span><span class="o">.</span><span class="n">connectSlotsByName</span><span class="p">(</span><span class="n">Form_Main</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">retranslateUi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Form_Main</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">Form_Main</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s">&quot;Form_Main&quot;</span><span class="p">,</span> <span class="s">&quot;VTK Test&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="o">.</span><span class="n">UnicodeUTF8</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">from</span> <span class="nn">vtk</span> <span class="kn">import</span> <span class="n">QVTKWidget</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>If anyone knows a simpler solution to this, please post it in the comments!</strong></p>
+
+<h2>Using MacTex and Homebrew</h2>
+
+<p>Just a short footnote for those of you who use <code>MacTex</code>. <code>MacTex</code> stores it&rsquo;s files under <code>/usr/local/texlive</code> next to the <code>Homebrew</code> stuff. They coexist peaceful next to each other, you just have to apply some diplomacy using the following command <a href="https://github.com/ThinkRuby/thinkruby/wiki/">[6]</a>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo chown -R <span class="nv">$USER</span>:staff /usr/local
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You might also consult the <code>brew doctor</code>, he will tell you what to do.</p>
+
+<h2>Thats it</h2>
+
+<p>Thank you for reading, I hope these instructions help you in some way. Please feel free to leave a comment. Have a nice day!</p>
+
+<hr />
+
+<h1>References</h1>
+
+<p><a href="http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/">[1] http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/</a><br />
+<a href="http://jbowles.github.com/blog/2012/04/22/python/">[2] http://jbowles.github.com/blog/2012/04/22/python/</a><br />
+<a href="http://mxcl.github.com/homebrew/">[3] http://mxcl.github.com/homebrew/</a><br />
+<a href="http://code.google.com/p/devide/wiki/EclipseDRE">[4] http://code.google.com/p/devide/wiki/EclipseDRE</a><br />
+<a href="https://svn.enthought.com/svn/enthought/Mayavi/trunk/enthought/tvtk/pyface/ui/qt4/QVTKRenderWindowInteractor.py">[5] https://svn.enthought.com/svn/enthought/Mayavi/trunk/enthought/tvtk/pyface/ui/qt4/QVTKRenderWindowInteractor.py</a><br />
+<a href="https://github.com/ThinkRuby/thinkruby/wiki/">[6] https://github.com/ThinkRuby/thinkruby/wiki/</a>.</p>
+
+<h2>This might also be useful for you</h2>
+
+<p><a href="http://graphics.tudelft.nl/Projects/DeVIDE">DeVIDE/DRE from the University of Delft</a><br />
+<a href="http://totalfinder.binaryage.com/">Total Finder</a><br />
+<a href="http://macromates.com/">My favorite Editor: Textmate</a><br />
+<a href="http://www.rkblog.rk.edu.pl/w/p/introduction-pyqt4/">Great collection of Python/Qt Tutorials</a></p>
+</div>
+  
+  
+
+</article>
+
+<nav id="pagenavi">
+    
+    
+    <div class="center"><a href="/zenf/blog/archives">Blog Archives</a></div>
+</nav>
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Paul Klemm -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'Zenf';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
