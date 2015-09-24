@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: R | Zenf]]></title>
-  <link href="http://paulklemm.github.io/zenf/blog/categories/r/atom.xml" rel="self"/>
-  <link href="http://paulklemm.github.io/zenf/"/>
-  <updated>2015-09-24T18:57:27+02:00</updated>
-  <id>http://paulklemm.github.io/zenf/</id>
+  <link href="http://paulklemm.com/zenf/blog/categories/r/atom.xml" rel="self"/>
+  <link href="http://paulklemm.com/zenf/"/>
+  <updated>2015-09-24T19:14:12+02:00</updated>
+  <id>http://paulklemm.com/zenf/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Run rJava with RStudio under OSX 10.10]]></title>
-    <link href="http://paulklemm.github.io/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/"/>
+    <link href="http://paulklemm.com/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/"/>
     <updated>2015-02-20T14:30:10+01:00</updated>
-    <id>http://paulklemm.github.io/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10</id>
+    <id>http://paulklemm.com/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10</id>
     <content type="html"><![CDATA[<h1>The Problem</h1>
 
 <p>I&rsquo;ve had some trouble getting rJava to run with RStudio. My current solution is a small workaround based on <a href="https://support.rstudio.com/hc/communities/public/questions/203781666-rJava-not-loading-in-RStudio-Mac-OS-X-10-10-but-loading-in-terminal">this post on the RStudio support pages</a>.</p>

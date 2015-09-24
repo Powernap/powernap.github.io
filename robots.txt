@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://paulklemm.github.io/zenf/sitemap.xml 
+Sitemap: http://paulklemm.com/zenf/sitemap.xml 

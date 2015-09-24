@@ -2,44 +2,42 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
-            http://paulklemm.github.io/zenf/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/
+            http://paulklemm.com/zenf/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/
         </loc>
         <lastmod>2015-09-24T18:30:31+02:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/zenf/blog/2013/12/07/watch-twitch-using-vlc-in-osx/</loc>
+        <loc>http://paulklemm.com/zenf/blog/2013/12/07/watch-twitch-using-vlc-in-osx/</loc>
+        <lastmod>2015-09-24T18:30:31+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://paulklemm.com/zenf/blog/2014/07/16/use-github-for-scientific-writing/</loc>
         <lastmod>2015-09-24T18:30:31+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://paulklemm.github.io/zenf/blog/2014/07/16/use-github-for-scientific-writing/
+            http://paulklemm.com/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/
         </loc>
         <lastmod>2015-09-24T18:30:31+02:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://paulklemm.github.io/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/
-        </loc>
+        <loc>http://paulklemm.com/zenf/404.html</loc>
         <lastmod>2015-09-24T18:30:31+02:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/zenf/404.html</loc>
+        <loc>http://paulklemm.com/zenf/blog/archives/</loc>
         <lastmod>2015-09-24T18:30:31+02:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/zenf/blog/archives/</loc>
+        <loc>http://paulklemm.com/zenf/blog/</loc>
         <lastmod>2015-09-24T18:30:31+02:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/zenf/blog/</loc>
+        <loc>http://paulklemm.com/zenf/</loc>
         <lastmod>2015-09-24T18:30:31+02:00</lastmod>
     </url>
     <url>
-        <loc>http://paulklemm.github.io/zenf/</loc>
-        <lastmod>2015-09-24T18:30:31+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://paulklemm.github.io/zenf/robots.txt</loc>
+        <loc>http://paulklemm.com/zenf/robots.txt</loc>
         <lastmod>2015-09-24T18:30:31+02:00</lastmod>
     </url>
 </urlset>

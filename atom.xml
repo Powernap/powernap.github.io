@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Zenf]]></title>
-  <link href="http://paulklemm.github.io/zenf/atom.xml" rel="self"/>
-  <link href="http://paulklemm.github.io/zenf/"/>
-  <updated>2015-09-24T18:57:27+02:00</updated>
-  <id>http://paulklemm.github.io/zenf/</id>
+  <link href="http://paulklemm.com/zenf/atom.xml" rel="self"/>
+  <link href="http://paulklemm.com/zenf/"/>
+  <updated>2015-09-24T19:14:12+02:00</updated>
+  <id>http://paulklemm.com/zenf/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Run rJava with RStudio under OSX 10.10]]></title>
-    <link href="http://paulklemm.github.io/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/"/>
+    <link href="http://paulklemm.com/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10/"/>
     <updated>2015-02-20T14:30:10+01:00</updated>
-    <id>http://paulklemm.github.io/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10</id>
+    <id>http://paulklemm.com/zenf/blog/2015/02/20/run-rjava-with-rstudio-under-osx-10-dot-10</id>
     <content type="html"><![CDATA[<h1>The Problem</h1>
 
 <p>I&rsquo;ve had some trouble getting rJava to run with RStudio. My current solution is a small workaround based on <a href="https://support.rstudio.com/hc/communities/public/questions/203781666-rJava-not-loading-in-RStudio-Mac-OS-X-10-10-but-loading-in-terminal">this post on the RStudio support pages</a>.</p>
@@ -108,9 +108,9 @@
   
   <entry>
     <title type="html"><![CDATA[Use Github for Scientific Writing]]></title>
-    <link href="http://paulklemm.github.io/zenf/blog/2014/07/16/use-github-for-scientific-writing/"/>
+    <link href="http://paulklemm.com/zenf/blog/2014/07/16/use-github-for-scientific-writing/"/>
     <updated>2014-07-16T16:36:35+02:00</updated>
-    <id>http://paulklemm.github.io/zenf/blog/2014/07/16/use-github-for-scientific-writing</id>
+    <id>http://paulklemm.com/zenf/blog/2014/07/16/use-github-for-scientific-writing</id>
     <content type="html"><![CDATA[<p><strong>tl;dr:</strong> <em><code>GIT</code> is a very good tool to manage scientific writing, either if you write it on your own or with collaborators. The rich set of tools supporting collaborative work makes <code>github</code> a good place for storing all information there.</em></p>
 
 <hr />
@@ -118,7 +118,7 @@
 <br>
 
 
-<p><img class="right" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/gitlab.png" width="200">
+<p><img class="right" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/gitlab.png" width="200">
 There are many reasons why I adore <code>github</code>! For me, it stands for all the good things associated with open content &mdash; the beautiful mindset behind it where many people participate to create amazing things! Openness, which is still largely missing in scientific research.</p>
 
 <p>Collaborative work on a scientific paper is carried out in the worst case by emailing <code>LaTeX</code> code. I don&rsquo;t think I have to talk about the disadvantages of this approach. Tools like <a href="www.dropbox.com">Dropbox</a> allow to share folders with different users, but also have major disadvantages. They share everything in a folder, regardless of source files or auxiliary files created during the typesetting process. Many <code>LaTeX</code> editors store configuration files in the project folders and are therefore synced as well. And the constant dropbox pop-up informing me that someone currently works on a text is maddening.</p>
@@ -144,16 +144,16 @@ There are many reasons why I adore <code>github</code>! For me, it stands for al
 
 <h3>Creating the New Repository</h3>
 
-<p><img class="right" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/createNewRepo.png" width="300"></p>
+<p><img class="right" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/createNewRepo.png" width="300"></p>
 
 <p>Creating a new repository at Github is easy as pie. When you are logged in, you can use the toolbar at the top right corner to create a new repository.</p>
 
-<p><img class="center" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/init.png"></p>
+<p><img class="center" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/init.png"></p>
 
 <p>In the next window you can create your new repository. Give it a meaningful title and make sure to select the <code>TeX</code> <code>.gitignore</code> template at the bottom. If you want to create a <em>private repository</em>, you can request it using this link: <a href="https://education.github.com/">https://education.github.com/</a>. The people at Github are pretty fast, it took them only a few hours to verify my account.</p>
 
 <p>After you&rsquo;ve created the repository it should look similar to this:
-<img class="center" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/init-2.png"></p>
+<img class="center" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/init-2.png"></p>
 
 <h3>Add your Files to the Repository</h3>
 
@@ -191,7 +191,7 @@ There are many reasons why I adore <code>github</code>! For me, it stands for al
 
 <p>Here is an example for doing this:</p>
 
-<p><img class="right" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/folder.png" width="200"></p>
+<p><img class="right" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/folder.png" width="200"></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -295,9 +295,9 @@ There are many reasons why I adore <code>github</code>! For me, it stands for al
 <p>Updating the repository is straightforward, just run <code>git add &lt;your File&gt;</code>, create a <code>git commit</code> and <code>git push</code> it to the server. If you just want to update all files in the repository, you can use <code>git commit -a</code> instead of tediously <code>git add</code>&lsquo;ing all changed files.</p>
 
 <p>All commits can be viewed at your projects <code>github</code> page.
-<img class="center" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/commits.png">
+<img class="center" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/commits.png">
 Here you can see the changes made to the repository in every commit. Each line can also be commented to trigger a discussion or give feedback! These views are called <em>DIFFs</em>.
-<img class="center" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/diff.png" width="350"></p>
+<img class="center" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/diff.png" width="350"></p>
 
 <h3>Structure your <code>LaTeX</code> Documents</h3>
 
@@ -345,7 +345,7 @@ Here you can see the changes made to the repository in every commit. Each line c
 
 <h3>Use the Social Features!</h3>
 
-<p><img class="right" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/discussion.png" width="400">
+<p><img class="right" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/discussion.png" width="400">
 Having all authors of a scientific paper in one place is rare. Exchange of ideas and feedback via email is tedious. The build in <a href="https://help.github.com/articles/about-github-wikis"><code>Wiki</code></a> for each repository is a great way for collecting and summarizing ideas. Even in public repositories you can restrict access to the wiki to collaborators only if you want to keep it more private.</p>
 
 <p>The <code>issue</code> and <code>milestone</code> system is packed with useful features for discussing the current process of the work. Discussions can even be referenced to commits. All information is kept at one place, communication is synchronized and you don&rsquo;t need to look up old mails with chunks of information any more!</p>
@@ -354,7 +354,7 @@ Having all authors of a scientific paper in one place is rare. Exchange of ideas
 
 <p>Say you want to write a new section, but it will take a couple of days. At the same time, you do not want to change the repository all the time, forcing your co-authors to <code>git pull</code> every time they also want to edit the paper. <code>GIT</code> was designed with such cases in mind! You can simply create your own sub-repository, called a <code>branch</code>, edit it and merge it together with the master-branch.</p>
 
-<p><img class="right" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/branch.png" width="200"></p>
+<p><img class="right" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/branch.png" width="200"></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -415,7 +415,7 @@ Having all authors of a scientific paper in one place is rare. Exchange of ideas
 
 <h3>Create Releases</h3>
 
-<p><img class="right" src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/releases.png" width="350">
+<p><img class="right" src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/releases.png" width="350">
 <code>Releases</code> are a great feature to freeze commits. I use it to save important milestones, such as the blind submission for reviewing.</p>
 
 <h3>Use All the Features!</h3>
@@ -433,15 +433,15 @@ Having all authors of a scientific paper in one place is rare. Exchange of ideas
 <h2>Encore</h2>
 
 <p>This is what reviewing revisions can look like if your co-authors use this workflow. I find this pretty awesome &lt;3.
-<img src="http://paulklemm.github.io/zenf/media/2014-07-16-use-github-for-scientific-writing/comparison.gif"></p>
+<img src="http://paulklemm.com/zenf/media/2014-07-16-use-github-for-scientific-writing/comparison.gif"></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Watch Twitch using VLC in OS X]]></title>
-    <link href="http://paulklemm.github.io/zenf/blog/2013/12/07/watch-twitch-using-vlc-in-osx/"/>
+    <link href="http://paulklemm.com/zenf/blog/2013/12/07/watch-twitch-using-vlc-in-osx/"/>
     <updated>2013-12-07T00:20:42+01:00</updated>
-    <id>http://paulklemm.github.io/zenf/blog/2013/12/07/watch-twitch-using-vlc-in-osx</id>
+    <id>http://paulklemm.com/zenf/blog/2013/12/07/watch-twitch-using-vlc-in-osx</id>
     <content type="html"><![CDATA[<p>If you own a Retina-Macbook you problably struggle with fairly high CPU load and bad performance when watching Twitch-channels using the standard flash-based player in the browser.</p>
 
 <p>A tool called <code>livestreamer</code> can be used to bring Twitch streams to the beloved VLC player (which also uses the GPU to process videos). This way you are not just able to reduce the used resources, the streams also feel much smoother, especially for high resolutions.</p>
@@ -509,7 +509,7 @@ All you have to to is go into the <code>Terminal.app</code> and type</p>
 <p>Here, <code>[quality]</code> has to be a quality setting from the stream, usually ranging between <code>low</code>, <code>medium</code>, <code>high</code> and <code>source</code>. If you leave it empty, <code>livestreamer</code> will tell you, which options you can choose from. Setting the parameter to <code>best</code> tells <code>livestreamer</code> to use the highest quality available.</p>
 
 <p>Et voilá. Enjoy your stream.
-<img class="center" src="http://paulklemm.github.io/zenf/media/2013-12-07-watch-twitch-using-vlc-in-osx/twitch-vlc-sc2_small.png"></p>
+<img class="center" src="http://paulklemm.com/zenf/media/2013-12-07-watch-twitch-using-vlc-in-osx/twitch-vlc-sc2_small.png"></p>
 
 <h2>Update Livestreamer</h2>
 
@@ -547,9 +547,9 @@ All you have to to is go into the <code>Terminal.app</code> and type</p>
   
   <entry>
     <title type="html"><![CDATA[Install Python with VTK and Qt support for use with Eclipse in OS X Mountain Lion]]></title>
-    <link href="http://paulklemm.github.io/zenf/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/"/>
+    <link href="http://paulklemm.com/zenf/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion/"/>
     <updated>2012-08-20T10:04:00+02:00</updated>
-    <id>http://paulklemm.github.io/zenf/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion</id>
+    <id>http://paulklemm.com/zenf/blog/2012/08/20/install-python-together-with-vtk-using-homebrew-for-mountain-lion</id>
     <content type="html"><![CDATA[<p>In this post I&rsquo;d like to show you how to install <code>Python</code> with support for <code>VTK</code> and <code>Qt</code> using Apple OS X 10.8 Mountain Lion. Then I set up <code>Eclipse</code> with the new <code>Python</code> installation in order to use all of it&rsquo;s auto-completion and debugging capabilities. Please leave a comment with your experiences using this.</p>
 
 <p>The instructions for the installation of <code>Python</code> and <code>Qt</code> consists mostly of information from these two posts <a href="http://www.thisisthegreenroom.com/2011/installing-python-numpy-scipy-matplotlib-and-ipython-on-lion/">[1]</a> <a href="http://jbowles.github.com/blog/2012/04/22/python/">[2]</a>, so please credit these guys for this, not me.</p>
@@ -657,9 +657,9 @@ Note: If you have a Terminal session up and running you need to restart it in or
 <p>This part is oriented on the introduction on how to include the <code>DRE</code> into <code>Eclipse</code>, which can be found under <a href="http://code.google.com/p/devide/wiki/EclipseDRE">[4]</a> and in the following screencast. I just made a few enhancements to make it work for this application. Note that the steps of the screencast don&rsquo;t work exactly on our installation!<iframe width="420" height="315" src="https://www.youtube.com/embed/-b1zS536R2M" frameborder="0" allowfullscreen></iframe></p>
 
 <p>To use <code>Python</code> together with <code>Eclipse</code> you have to install the <em>Classic</em> Version from <a href="http://www.eclipse.org/downloads/">the official homepage</a>. Next, <a href="http://pydev.org/manual_101_install.html">install PyDev into Eclipse</a>. Now you need to tell <code>Eclipse</code> which <code>Python</code> installation it should use. This can be done in <code>Eclipse → Settings → Pydev → Interpreter-Python → New</code>. In the next Dialog you have to add Path to the Homebrew <code>Python</code>.
-<img class="center" src="http://paulklemm.github.io/zenf/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonInterpreter.png">
+<img class="center" src="http://paulklemm.com/zenf/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonInterpreter.png">
 Confirm the next Prompt which should look like the following screenshot and you are done.
-<img class="center" src="http://paulklemm.github.io/zenf/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonPackages.png"></p>
+<img class="center" src="http://paulklemm.com/zenf/media/2012-08-20-install-python-together-with-vtk-using-homebrew-for-mountain-lion/selectPythonPackages.png"></p>
 
 <p>Now you are good to go. Create a new PyDev Project, select the new created interpreter and play around with <code>VTK</code> &ndash; it all should be working with auto completion and the other neat <code>Eclipse</code> features. The Code example Charl used in the Screencast should compile:</p>
 
