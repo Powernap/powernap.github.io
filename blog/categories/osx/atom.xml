@@ -4,7 +4,7 @@
   <title><![CDATA[Category: OSX | Zenf]]></title>
   <link href="http://paulklemm.com/zenf/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://paulklemm.com/zenf/"/>
-  <updated>2015-09-24T19:30:35+02:00</updated>
+  <updated>2015-12-09T17:07:41+01:00</updated>
   <id>http://paulklemm.com/zenf/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -108,7 +108,7 @@
 
 <h2>Make an Alias for the new Command with your Shell</h2>
 
-<p>If you want you can register a alias with your shell. Using <code>bash</code>, I&rsquo;ve opened my bash profile under <code>~/.bash_profile</code> and added the following alias:</p>
+<p>You can register an alias with your shell. For <code>bash</code> you open the bash profile under <code>~/.bash_profile</code> and add the following alias:</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">alias </span><span class="nv">rstudio</span><span class="o">=</span>&amp;lsquo;LD_LIBRARY_PATH<span class="o">=</span><span class="k">$(</span>/usr/libexec/java_home<span class="k">)</span>/jre/lib/server: open -a RStudio&amp;rsquo;
@@ -117,6 +117,60 @@
 <h1>Thats it</h1>
 
 <p>I hope this gets fixed soon. Until then, hopefully my workaround works for you guys! See you :).</p>
+
+<h1>Update 2015-12-09</h1>
+
+<p>In my current setting of <code>OSX 10.11.2 (15C50)</code>, <code>R version 3.2.2 (2015-08-14)</code> and <code>rJava 0.9-8</code>, this solution does not work. Unfortunately, I have no idea how to fix it. Here is my current situation.</p>
+
+<h2>Installing the rJava from CRAN fails</h2>
+
+<p>Since <a href="https://stat.ethz.ch/pipermail/r-sig-mac/2015-November/011712.html">El Capitan seems to have problems with passing evironment variables</a>, the current CRAN version of rJava will crash during the installation process. It yields the following error:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>install.packages<span class="p">(</span><span class="o">&amp;</span>ldquo<span class="p">;</span>rJava<span class="o">&amp;</span>rdquo<span class="p">;)</span><span class="o">&lt;/</span>p<span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span>h1<span class="o">&gt;</span>Output until error skipped<span class="o">&lt;/</span>h1<span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span>p<span class="o">&gt;</span>configure<span class="o">:</span> error<span class="o">:</span> One or more JNI types differ from the corresponding native type. You may need to use non<span class="o">-</span>standard compiler flags or a different compiler <span class="kr">in</span> order to fix this.
+</span><span class='line'>ERROR<span class="o">:</span> configuration failed <span class="kr">for</span> package ‘rJava’
+</span><span class='line'><span class="o">*</span> removing ‘<span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>lib<span class="o">/</span>R<span class="o">/</span><span class="m">3.2</span><span class="o">/</span>site<span class="o">-</span>library<span class="o">/</span>rJava’
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This can, however, be easily fixed by installing <a href="https://www.rforge.net/rJava/files/">rJava from RForge.net</a> as stated <a href="https://stackoverflow.com/questions/33550437/install-rjava-one-or-more-jni-types-differ-from-the-corresponding-native-type">here</a>. Running <code>install.packages('&lt;PATH TO DOWNLOAD&gt;/rJava_0.9-8.tar.gz', repos = NULL, type="source")</code> installed the current rJava version properly.</p>
+
+<h2>Loading rJava in RStudio fails</h2>
+
+<p>I&rsquo;ve set up my homebrew R version properly using <code>R CMD javareconf JAVA_CPPFLAGS="-I/System/Library/Frameworks/JavaVM.framework/Headers -I/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/"</code> as statet in the caveats of the install. Also, <code>/usr/libexec/java_home</code> yields the proper path.</p>
+
+<p>Loading rJava in R through the shell works fine. Loading RStudio with <code>LD_LIBRARY_PATH=$(/usr/libexec/java_home)/jre/lib/server: open -a RStudio</code> and loading rJava does not. It yields the same error as before:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>rJava<span class="p">)</span>
+</span><span class='line'>Error <span class="o">:</span> .onLoad failed <span class="kr">in</span> loadNamespace<span class="p">()</span> <span class="kr">for</span> <span class="o">&amp;</span>lsquo<span class="p">;</span>rJava<span class="o">&amp;</span>rsquo<span class="p">;,</span> details<span class="o">:</span>
+</span><span class='line'>  call<span class="o">:</span> dyn.load<span class="p">(</span>file<span class="p">,</span> DLLpath <span class="o">=</span> DLLpath<span class="p">,</span> <span class="o">&amp;</span>hellip<span class="p">;)</span>
+</span><span class='line'>  error<span class="o">:</span> unable to load shared object <span class="o">&amp;</span>lsquo<span class="p">;</span><span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>lib<span class="o">/</span>R<span class="o">/</span><span class="m">3.2</span><span class="o">/</span>site<span class="o">-</span>library<span class="o">/</span>rJava<span class="o">/</span>libs<span class="o">/</span>rJava.so<span class="o">&amp;</span>rsquo<span class="p">;</span><span class="o">:</span>
+</span><span class='line'>  dlopen<span class="p">(</span><span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>lib<span class="o">/</span>R<span class="o">/</span><span class="m">3.2</span><span class="o">/</span>site<span class="o">-</span>library<span class="o">/</span>rJava<span class="o">/</span>libs<span class="o">/</span>rJava.so<span class="p">,</span> <span class="m">6</span><span class="p">)</span><span class="o">:</span> Library not loaded<span class="o">:</span> <span class="o">@</span>rpath<span class="o">/</span>libjvm.dylib
+</span><span class='line'>  Referenced from<span class="o">:</span> <span class="o">/</span>usr<span class="o">/</span>local<span class="o">/</span>lib<span class="o">/</span>R<span class="o">/</span><span class="m">3.2</span><span class="o">/</span>site<span class="o">-</span>library<span class="o">/</span>rJava<span class="o">/</span>libs<span class="o">/</span>rJava.so
+</span><span class='line'>  Reason<span class="o">:</span> image not found
+</span><span class='line'>Error<span class="o">:</span> package or namespace load failed <span class="kr">for</span> ‘rJava’
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>The Solution?</h2>
+
+<p>If you have any ideas on how to solve this, please let me know.</p>
 ]]></content>
   </entry>
   
