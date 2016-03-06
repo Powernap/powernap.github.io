@@ -99,20 +99,20 @@
 
 <h2>Introduction: Switch from Textmate</h2>
 
-<p>I&rsquo;ve been using Textmate to write and compile my LaTeX Documents since 2007. <a href="http://jann.is/daily/archives/756-LaTex-Live-PDF-preview-with-TextMate-and-PDFView.html">This Blog post</a> by Jannis Hermanns basically defined my workflow since then. The neat <code>Watch Document</code> feature compiles the document and looks for changes. It recompiles the document as soon as it is saved.</p>
+<p>I&rsquo;ve been using Textmate to write and compile my LaTeX Documents since 2007. <a href="http://jann.is/daily/archives/756-LaTex-Live-PDF-preview-with-TextMate-and-PDFView.html">This Blog post</a> by Jannis Hermanns basically defined my workflow since then. It&rsquo;s core is the neat <code>Watch Document</code> feature of Textmate, which compiles the document and looks for changes. It recompiles the document as soon as it is saved.</p>
 
 <p><img class="center" src="/zenf/media/2016-03-06-watch-latex-documents-using-latexmk/textmate_watch_document.gif" title="The watch document command of Textmate previews changes when saving the document" ></p>
 
 <p>This also works with LaTeX projects consisting of multiple files. Simply put the watch on the project master file and it will also look for changes in the associated files. This even extends to included images.</p>
 
-<p>If you even use a proper PDF viewer that supports <a href="http://itexmac.sourceforge.net/SyncTeX.html">SyncTex</a>, such as <a href="http://skim-app.sourceforge.net/">Skim</a>, you can even jump to the current position of the cursor from the Tex document to the PDF and vice versa.</p>
+<p>If you use a PDF viewer that supports <a href="http://itexmac.sourceforge.net/SyncTeX.html">SyncTeX</a>, such as <a href="http://skim-app.sourceforge.net/">Skim</a>, you can even jump to the current position of the cursor from the TeX document to the PDF and vice versa.</p>
 
-<p>Once I got used to this convenience, compiling by hand felt like a chore. Unfortunately, using Textmate began to feel likewise. Since I do all my coding in Sublime Text, I <a href="http://tex.stackexchange.com/questions/276973/pendant-to-textmate-watch-document-function-in-sublime-text-latextools">looked for a similar workflow for that editor</a>.
-Turns out, it doesn&rsquo;t matter which editor you use, you can simply incorporate <a href="https://www.ctan.org/pkg/latexmk/"><code>latexmk</code></a> to achieve this functionality. Event better, <code>latexmk</code> is shipped per default with all large LaTeX distributions, so you should have it installed already.</p>
+<p>Once I got used to this convenience, compiling LaTeX documents by hand felt like a chore. Unfortunately, using Textmate began to feel likewise. Since I do all my coding in Sublime Text, I <a href="http://tex.stackexchange.com/questions/276973/pendant-to-textmate-watch-document-function-in-sublime-text-latextools">looked for a similar workflow for that editor</a>.
+Turns out, it doesn&rsquo;t matter which editor you use, you can simply incorporate <a href="https://www.ctan.org/pkg/latexmk/"><code>latexmk</code></a> to achieve this functionality. Even better, <code>latexmk</code> is shipped per default with the most popular LaTeX distributions, so you should have it installed already.</p>
 
 <h2>Compile LaTeX Projects using Latexmk</h2>
 
-<p>Consider the following LaTeX document <code>article.tex</code>.</p>
+<p>Consider the following LaTeX document <code>article.tex</code>:</p>
 
 <figure class='code'><figcaption><span>article.tex </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -126,7 +126,7 @@ Turns out, it doesn&rsquo;t matter which editor you use, you can simply incorpor
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Using <code>latexmk</code>, you can compile this into a PDF file by entering the following command.</p>
+<p>Using <code>latexmk</code>, you can compile this into a PDF file by entering the following command:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>latexmk -pdf article.tex
@@ -140,13 +140,13 @@ Turns out, it doesn&rsquo;t matter which editor you use, you can simply incorpor
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>As you can see, the command will not terminate back into the prompt, as <code>latexmk</code> watches for updated files (<em>targets</em>) associated with the previewed file. This is already close to the desired behavior. I suggest adding the following options:</p>
+<p>As you can see, the command will not terminate back into the prompt, as <code>latexmk</code> watches for updated files (<em>targets</em>) associated with the previewed file. You have to shutdown it manually using <code>CTRL-C</code>. This is already close to the desired behavior. I suggest adding the following options:</p>
 
 <ul>
 <li><code>-bibtex</code> to compile associated BibTeX files,</li>
 <li><code>-f</code> to continue compiling albeit found errors,</li>
 <li><code>-quiet</code> to make <code>latexmk</code> less verbose and show only important messages,</li>
-<li><code>-use-make</code> tries to resolve missing files after the <code>pdflatex</code> call using custom dependencies, and</li>
+<li><code>-use-make</code> to resolve missing files after the <code>pdflatex</code> call using custom dependencies, and</li>
 <li><code>-pdflatex="pdflatex -synctex=1 -interaction=nonstopmode"</code>  to add options to the pdflatex command, most important the <code>synctex</code> command to allow jumping between the source PDF and the text editor.</li>
 </ul>
 
@@ -154,9 +154,7 @@ Turns out, it doesn&rsquo;t matter which editor you use, you can simply incorpor
 <p>For a precise description of each command, refer to the <a href="http://ftp.fernuni-hagen.de/ftp-dir/pub/mirrors/www.ctan.org/support/latexmk/latexmk.pdf">latexmk readme</a>. All options together yield the following command:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>latexmk -quiet -bibtex -pvc -f -pdf -pdflatex<span class="o">=</span><span class="s2">&quot;pdflatex -synctex=1 -interaction=nonstopmode&quot;</span> article.tex
-</span><span class='line'><span class="sb">```</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -166,20 +164,16 @@ Turns out, it doesn&rsquo;t matter which editor you use, you can simply incorpor
 
 <h2>Use the Power of <code>make</code> with <code>latexmk</code></h2>
 
-<p>Utilizing this knowledge with <code>makefiles</code> is easy. I know that for most people, makefiles are often scary due to their seemingly obscure syntax, but actually they are easy to set up and will spare you <em>a lot</em> of work. If you want to get a quick introduction to <code>make</code>, I strongly recommend Mike Bostocks <a href="https://bost.ocks.org/mike/make/">beautiful blog post</a> on it. The commands applied here, however, are basic and should be self explanatory.</p>
+<p>Utilizing this knowledge with <code>makefiles</code> is easy. I know that makefiles often look scary due to their seemingly obscure syntax, but actually they are easy to set up and will spare you <em>a lot</em> of work. If you want to have a quick introduction to <code>make</code>, I strongly recommend Mike Bostocks <a href="https://bost.ocks.org/mike/make/">beautiful blog post on it</a>. The commands applied here, however, are basic and should be self explanatory.</p>
 
-<p>The <code>makefile</code> I propose is an adapted version from <a href="https://tex.stackexchange.com/questions/40738/how-to-properly-make-a-latex-project">this stackoverflow post</a>.</p>
-
-<p>This comes down to personal preference, I built the makefile to work like this:</p>
+<p>The <code>makefile</code> I propose is an adapted version from <a href="https://tex.stackexchange.com/questions/40738/how-to-properly-make-a-latex-project">this stackoverflow post</a>. I built the makefile to work as follows:</p>
 
 <ul>
-<li><code>make</code> compiles the document, but does <em>not</em> watch for changes,</li>
-<li><code>make preview</code> compiles the document and watches the document for changes using the <code>latexmk -pvc</code> command, and</li>
-<li><code>make clean</code> removes all files produced using the LaTeX compilation process including the resulting PDF.</li>
+<li><code>make</code> compiles the document, but does not watch for changes,</li>
+<li><code>make preview</code> compiles the document and watches for changes using the <code>latexmk -pvc</code> command, and</li>
+<li><code>make clean</code> removes all files produced using the LaTeX compilation process, including the resulting PDF.</li>
 </ul>
 
-
-<p>Here is the <code>makefile</code>:</p>
 
 <figure class='code'><figcaption><span>makefile </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -243,9 +237,9 @@ Turns out, it doesn&rsquo;t matter which editor you use, you can simply incorpor
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The <code>all</code> task is straightforward to create the target file &ldquo;article.pdf&rdquo;, which is created using <code>latexmk</code> later on. You&rsquo;ll notice the <code>$(PREVIEW)</code> where the <code>-pvc</code> option should be. <code>$(PREVIEW)</code> refers to the variable <code>PREVIEW</code>, which is empty for all calls except for <code>make preview</code>, where <code>PREVIEW</code> is set to <code>-pvc</code>. The <code>make clean</code> command removes all latex output files including the BibTeX files as well as the PDF.</p>
+<p>The <code>all</code> task creates the target file &ldquo;article.pdf&rdquo; using <code>latexmk</code>. You&rsquo;ll notice the <code>$(PREVIEW)</code> where the <code>-pvc</code> option should be. <code>$(PREVIEW)</code> refers to the variable <code>PREVIEW</code>, which is empty for all calls except for <code>make preview</code>, where <code>PREVIEW</code> is set to <code>-pvc</code>. The <code>make clean</code> command removes all LaTeX output files, including the BibTeX files as well as the PDF.</p>
 
-<p>If you ran <code>make</code> and now want to run <code>make preview</code>, it will most likely say &ldquo;Nothing to be done for <code>preview</code>&rdquo;, since it sees that the target pdf is up to date. The <code>-B</code> option forces make to create the targets, so <code>make -B preview</code> will work.</p>
+<p>If you ran <code>make</code> and now want to run <code>make preview</code>, it will get the message &ldquo;Nothing to be done for <code>preview</code>&rdquo;, since make sees that the target PDF is up to date. The <code>-B</code> option <em>forces</em> make to create the targets, so <code>make -B preview</code> will work.</p>
 
 <h2>Closing Remarks</h2>
 
