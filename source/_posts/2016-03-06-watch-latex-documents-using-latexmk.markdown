@@ -6,8 +6,6 @@ comments: true
 categories: 
 ---
 
-**THIS ARTICLE IS UNDER CONSTRUCTION**
-
 *tl,dr:* The `Watch Document` functionality of Textmate automatically compiles Tex documents when saved. This post describes how to achieve this behavior with any editor. It works for Unix-based systems, such as OSX or Linux. An example repository can be found [here](https://github.com/paulklemm/latexmk-synctex-example).
 
 ## Introduction: Switch from Textmate
