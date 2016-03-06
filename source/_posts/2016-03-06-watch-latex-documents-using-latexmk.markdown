@@ -8,13 +8,13 @@ categories:
 
 **THIS ARTICLE IS UNDER CONSTRUCTION**
 
-**tl,dr:** The `Watch Document` functionality of Textmate automatically compiles Tex documents when saved. This post describes how to achieve this behavior with any editor. It works for Unix-based systems, such as OSX or Linux.
+*tl,dr:* The `Watch Document` functionality of Textmate automatically compiles Tex documents when saved. This post describes how to achieve this behavior with any editor. It works for Unix-based systems, such as OSX or Linux. An example repository can be found [here](https://github.com/paulklemm/latexmk-synctex-example).
 
 ## Introduction: Switch from Textmate
 
 I've been using Textmate to write and compile my LaTeX Documents since 2007. [This Blog post](http://jann.is/daily/archives/756-LaTex-Live-PDF-preview-with-TextMate-and-PDFView.html) by Jannis Hermanns basically defined my workflow since then. The neat `Watch Document` feature compiles the document and looks for changes. It recompiles the document as soon as it is saved.
 
-{% img center /media/2016-03-06-watch-latex-documents-using-latexmk/textmate_watch_document.gif %}
+{% img center /media/2016-03-06-watch-latex-documents-using-latexmk/textmate_watch_document.gif The watch document command of Textmate previews changes when saving the document %}
 
 This also works with LaTeX projects consisting of multiple files. Simply put the watch on the project master file and it will also look for changes in the associated files. This even extends to included images.
 
@@ -62,7 +62,7 @@ latexmk -quiet -bibtex -pvc -f -pdf -pdflatex="pdflatex -synctex=1 -interaction=
 
 This is exactly the behavior I was looking for. And as a big plus, it is independent of your editor choice. Using it with [Sublime Text](https://www.sublimetext.com/) and the [LaTeXTools Plugin](https://www.sublimetext.com/) along with a Skim even allows to jump between source and compiled PDF using the enabled `synctex` feature.
 
-*insert gif of thesis with jumping in between files*
+{% img center /media/2016-03-06-watch-latex-documents-using-latexmk/synctex_sublime_skim.gif Jump between the IDE (Sublime Text 3 with LatexTools) and the PDF Viewer (Skim) using the Synctex feature %}
 
 ## Use the Power of `make` with `latexmk`
 
@@ -78,12 +78,12 @@ This comes down to personal preference, I built the makefile to work like this:
 
 Here is the `makefile`:
 
-{% codeblock make lang:make %}
+{% codeblock makefile lang:make %}
 # File adapted from this stackoverflow question: https://tex.stackexchange.com/questions/40738/how-to-properly-make-a-latex-project
 
 # The first rule in a Makefile is the one executed by default ("make"). It
 # should always be the "all" rule, so that "make" and "make all" are identical.
-all: Interactive\ Visual\ Analysis\ of\ Population\ Study\ Data.pdf
+all: article.pdf
 
 # MAIN LATEXMK RULE
 
@@ -95,14 +95,14 @@ all: Interactive\ Visual\ Analysis\ of\ Population\ Study\ Data.pdf
 # -synctex=1 is required to jump between the source PDF and the text editor
 # -pvc causes latexmk to watch the file directory for changes. Removing this command causes a single build
 # -quiet suppresses most status messages (https://tex.stackexchange.com/questions/40783/can-i-make-latexmk-quieter)
-Interactive\ Visual\ Analysis\ of\ Population\ Study\ Data.pdf: Interactive\ Visual\ Analysis\ of\ Population\ Study\ Data.tex
-    latexmk -quiet -bibtex $(PREVIEW) -f -pdf -pdflatex="pdflatex -synctex=1 -interaction=nonstopmode" -use-make Interactive\ Visual\ Analysis\ of\ Population\ Study\ Data.tex
+article.pdf: article.tex
+    latexmk -quiet -bibtex $(PREVIEW) -f -pdf -pdflatex="pdflatex -synctex=1 -interaction=nonstopmode" -use-make article.tex
 
 # The .PHONY rule keeps make from doing something with a file named preview or clean.
 .PHONY: preview
 # Set the preview variable to -pvc to switch latexmk into the preview continuously mode
 preview: PREVIEW=-pvc
-preview: Interactive\ Visual\ Analysis\ of\ Population\ Study\ Data.pdf
+preview: article.pdf
 
 .PHONY: clean
 # Adding the -bibtex also removes the .bbl files (http://tex.stackexchange.com/a/83384/79184)
@@ -112,6 +112,8 @@ clean:
 
 The `all` task is straightforward to create the target file "article.pdf", which is created using `latexmk` later on. You'll notice the `$(PREVIEW)` where the `-pvc` option should be. `$(PREVIEW)` refers to the variable `PREVIEW`, which is empty for all calls except for `make preview`, where `PREVIEW` is set to `-pvc`. The `make clean` command removes all latex output files including the BibTeX files as well as the PDF.
 
+If you ran `make` and now want to run `make preview`, it will most likely say "Nothing to be done for `preview`", since it sees that the target pdf is up to date. The `-B` option forces make to create the targets, so `make -B preview` will work.
+
 ## Closing Remarks
 
-*Note: If you ran `make` and now want to run `make preview`, it will most likely say "Nothing to be done for `preview`", since it sees that the target pdf is up to date. The `-B` option forces make to create the targets, so `make -B preview` will work.*
+You can find a minimal example of a `LaTeX` project using this setup in this Github repository: [github.com/paulklemm/latexmk-synctex-example](https://github.com/paulklemm/latexmk-synctex-example). Feel free to play around with your own `makefile` rules and explore the possibilities.
