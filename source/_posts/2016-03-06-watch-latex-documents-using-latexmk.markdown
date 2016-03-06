@@ -68,7 +68,7 @@ Utilizing this knowledge with `makefiles` is easy. I know that makefiles often l
 The `makefile` I propose is an adapted version from [this stackoverflow post](https://tex.stackexchange.com/questions/40738/how-to-properly-make-a-latex-project). I built the makefile to work as follows:
 
 - `make` compiles the document, but does not watch for changes,
-- `make preview` compiles the document and watches for changes using the `latexmk -pvc` command, and
+- `make watch` compiles the document and watches for changes using the `latexmk -pvc` command, and
 - `make clean` removes all files produced using the LaTeX compilation process, including the resulting PDF.
 
 {% codeblock makefile lang:make %}
@@ -89,13 +89,13 @@ all: article.pdf
 # -pvc (preview continuously) watches the directory for changes.
 # -quiet suppresses most status messages (https://tex.stackexchange.com/questions/40783/can-i-make-latexmk-quieter).
 article.pdf: article.tex
-    latexmk -quiet -bibtex $(WATCH) -f -pdf -pdflatex="pdflatex -synctex=1 -interaction=nonstopmode" -use-make article.tex
+    latexmk -quiet -bibtex $(PREVIEW_CONTINUOUSLY) -f -pdf -pdflatex="pdflatex -synctex=1 -interaction=nonstopmode" -use-make article.tex
 
-# The .PHONY rule keeps make from processing a file named "preview" or "clean".
-.PHONY: preview
-# Set the preview variable to -pvc to switch latexmk into the preview continuously mode
-preview: WATCH=-pvc
-preview: article.pdf
+# The .PHONY rule keeps make from processing a file named "watch" or "clean".
+.PHONY: watch
+# Set the PREVIEW_CONTINUOUSLY variable to -pvc to switch latexmk into the preview continuously mode
+watch: PREVIEW_CONTINUOUSLY=-pvc
+watch: article.pdf
 
 .PHONY: clean
 # -bibtex also removes the .bbl files (http://tex.stackexchange.com/a/83384/79184).
@@ -103,7 +103,7 @@ clean:
     latexmk -CA -bibtex
 {% endcodeblock %}
 
-The `all` task creates the target file "article.pdf" using `latexmk`. You'll notice the `$(WATCH)` where the `-pvc` option should be. `$(WATCH)` refers to the variable `WATCH`, which is empty for all calls except for `make preview`, where `WATCH` is set to `-pvc`. The `make clean` command removes all LaTeX output files, including the BibTeX files as well as the PDF.
+The `all` task creates the target file "article.pdf" using `latexmk`. You'll notice the `$(PREVIEW_CONTINUOUSLY)` where the `-pvc` option should be. `$(PREVIEW_CONTINUOUSLY)` refers to the variable `PREVIEW_CONTINUOUSLY`, which is empty for all calls except for `make watch`, where `PREVIEW_CONTINUOUSLY` is set to `-pvc`. The `make clean` command removes all LaTeX output files, including the BibTeX files as well as the PDF.
 
 If you ran `make` and now want to run `make preview`, it will get the message "Nothing to be done for `preview`", since make sees that the target PDF is up to date. The `-B` option *forces* make to create the targets, so `make -B preview` will work.
 
