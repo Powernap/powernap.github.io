@@ -216,31 +216,31 @@ Turns out, it doesn&rsquo;t matter which editor you use, you can simply incorpor
 </span><span class='line'>
 </span><span class='line'><span class="c"># MAIN LATEXMK RULE</span>
 </span><span class='line'>
-</span><span class='line'><span class="c"># -pdf tells latexmk to generate PDF directly (instead of DVI).</span>
+</span><span class='line'><span class="c"># -pdf tells latexmk to generate a PDF instead of DVI.</span>
 </span><span class='line'><span class="c"># -pdflatex=&quot;&quot; tells latexmk to call a specific backend with specific options.</span>
 </span><span class='line'><span class="c"># -use-make tells latexmk to call make for generating missing files.</span>
 </span><span class='line'><span class="c"># -interaction=nonstopmode keeps the pdflatex backend from stopping at a</span>
 </span><span class='line'><span class="c"># missing file reference and interactively asking you for an alternative.</span>
-</span><span class='line'><span class="c"># -synctex=1 is required to jump between the source PDF and the text editor</span>
-</span><span class='line'><span class="c"># -pvc causes latexmk to watch the file directory for changes. Removing this command causes a single build</span>
-</span><span class='line'><span class="c"># -quiet suppresses most status messages (https://tex.stackexchange.com/questions/40783/can-i-make-latexmk-quieter)</span>
+</span><span class='line'><span class="c"># -synctex=1 is required to jump between the source PDF and the text editor.</span>
+</span><span class='line'><span class="c"># -pvc (preview continuously) watches the directory for changes.</span>
+</span><span class='line'><span class="c"># -quiet suppresses most status messages (https://tex.stackexchange.com/questions/40783/can-i-make-latexmk-quieter).</span>
 </span><span class='line'><span class="nf">article.pdf</span><span class="o">:</span> <span class="m">article.tex</span>
-</span><span class='line'>    latexmk -quiet -bibtex <span class="k">$(</span>PREVIEW<span class="k">)</span> -f -pdf -pdflatex<span class="o">=</span><span class="s2">&quot;pdflatex -synctex=1 -interaction=nonstopmode&quot;</span> -use-make article.tex
+</span><span class='line'>    latexmk -quiet -bibtex <span class="k">$(</span>WATCH<span class="k">)</span> -f -pdf -pdflatex<span class="o">=</span><span class="s2">&quot;pdflatex -synctex=1 -interaction=nonstopmode&quot;</span> -use-make article.tex
 </span><span class='line'>
-</span><span class='line'><span class="c"># The .PHONY rule keeps make from doing something with a file named preview or clean.</span>
+</span><span class='line'><span class="c"># The .PHONY rule keeps make from processing a file named &quot;preview&quot; or &quot;clean&quot;.</span>
 </span><span class='line'><span class="nf">.PHONY</span><span class="o">:</span> <span class="m">preview</span>
 </span><span class='line'><span class="c"># Set the preview variable to -pvc to switch latexmk into the preview continuously mode</span>
-</span><span class='line'><span class="nf">preview</span><span class="o">:</span> <span class="m">PREVIEW=-pvc</span>
+</span><span class='line'><span class="nf">preview</span><span class="o">:</span> <span class="m">WATCH=-pvc</span>
 </span><span class='line'><span class="nf">preview</span><span class="o">:</span> <span class="m">article.pdf</span>
 </span><span class='line'>
 </span><span class='line'><span class="nf">.PHONY</span><span class="o">:</span> <span class="m">clean</span>
-</span><span class='line'><span class="c"># Adding the -bibtex also removes the .bbl files (http://tex.stackexchange.com/a/83384/79184)</span>
+</span><span class='line'><span class="c"># -bibtex also removes the .bbl files (http://tex.stackexchange.com/a/83384/79184).</span>
 </span><span class='line'><span class="nf">clean</span><span class="o">:</span>
 </span><span class='line'>    latexmk -CA -bibtex
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The <code>all</code> task creates the target file &ldquo;article.pdf&rdquo; using <code>latexmk</code>. You&rsquo;ll notice the <code>$(PREVIEW)</code> where the <code>-pvc</code> option should be. <code>$(PREVIEW)</code> refers to the variable <code>PREVIEW</code>, which is empty for all calls except for <code>make preview</code>, where <code>PREVIEW</code> is set to <code>-pvc</code>. The <code>make clean</code> command removes all LaTeX output files, including the BibTeX files as well as the PDF.</p>
+<p>The <code>all</code> task creates the target file &ldquo;article.pdf&rdquo; using <code>latexmk</code>. You&rsquo;ll notice the <code>$(WATCH)</code> where the <code>-pvc</code> option should be. <code>$(WATCH)</code> refers to the variable <code>WATCH</code>, which is empty for all calls except for <code>make preview</code>, where <code>WATCH</code> is set to <code>-pvc</code>. The <code>make clean</code> command removes all LaTeX output files, including the BibTeX files as well as the PDF.</p>
 
 <p>If you ran <code>make</code> and now want to run <code>make preview</code>, it will get the message &ldquo;Nothing to be done for <code>preview</code>&rdquo;, since make sees that the target PDF is up to date. The <code>-B</code> option <em>forces</em> make to create the targets, so <code>make -B preview</code> will work.</p>
 
@@ -1449,7 +1449,7 @@ To give an example for a converted UI file which runs, look at the following cod
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/zenf/blog/2016/03/06/watch-latex-documents-using-latexmk/">Watch LaTeX Documents using latexmk</a>
+        <a href="/zenf/blog/2016/03/06/watch-latex-documents-using-latexmk/">Watch LaTeX Documents using Latexmk</a>
       </li>
     
       <li class="post">
