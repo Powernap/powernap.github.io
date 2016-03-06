@@ -4,7 +4,7 @@
   <title><![CDATA[Zenf]]></title>
   <link href="http://paulklemm.com/zenf/atom.xml" rel="self"/>
   <link href="http://paulklemm.com/zenf/"/>
-  <updated>2016-03-06T19:49:50+01:00</updated>
+  <updated>2016-03-06T19:50:46+01:00</updated>
   <id>http://paulklemm.com/zenf/</id>
   <author>
     <name><![CDATA[Paul Klemm]]></name>
@@ -18,9 +18,7 @@
     <link href="http://paulklemm.com/zenf/blog/2016/03/06/watch-latex-documents-using-latexmk/"/>
     <updated>2016-03-06T16:54:47+01:00</updated>
     <id>http://paulklemm.com/zenf/blog/2016/03/06/watch-latex-documents-using-latexmk</id>
-    <content type="html"><![CDATA[<p><strong>THIS ARTICLE IS UNDER CONSTRUCTION</strong></p>
-
-<p><em>tl,dr:</em> The <code>Watch Document</code> functionality of Textmate automatically compiles Tex documents when saved. This post describes how to achieve this behavior with any editor. It works for Unix-based systems, such as OSX or Linux. An example repository can be found <a href="https://github.com/paulklemm/latexmk-synctex-example">here</a>.</p>
+    <content type="html"><![CDATA[<p><em>tl,dr:</em> The <code>Watch Document</code> functionality of Textmate automatically compiles Tex documents when saved. This post describes how to achieve this behavior with any editor. It works for Unix-based systems, such as OSX or Linux. An example repository can be found <a href="https://github.com/paulklemm/latexmk-synctex-example">here</a>.</p>
 
 <h2>Introduction: Switch from Textmate</h2>
 
